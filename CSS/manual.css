@@ -1,0 +1,15 @@
+dt {
+    font-weight: bold;
+}
+
+h1, h2 {
+    padding-left: .5%;
+}
+
+h3, p, dl, details {
+    padding-left: 1%;
+}
+
+dt {
+    padding-top: .5%;
+}
