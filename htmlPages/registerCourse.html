@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <script src="../scripts/submitPopUp.js"></script> 
+    <script src="../validation.js"></script>
 </head>
 <header>Register Course</header>
 <nav>
@@ -24,20 +25,20 @@
 <body>
     <main>
         <div class="form-container">
-            <form>
+            <form id="form">
                 <div class="form-group">
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" required>
+                    <input type="text" id="firstName" name="firstName">
                 </div>
                 
                 <div class="form-group">
                     <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" required>
+                    <input type="text" id="lastName" name="lastName">
                 </div>
                 
                 <div class="form-group">
                     <label for="semester">Semester:</label>
-                    <select id="semester" name="semester" required>
+                    <select id="semester" name="semester">
                         <option value="spring">Spring</option>
                         <option value="summer">Summer</option>
                         <option value="fall">Fall</option>
@@ -46,22 +47,22 @@
                 
                 <div class="form-group">
                     <label for="year">Year:</label>
-                    <input type="number" id="year" name="year" required>
+                    <input type="number" id="year" name="year">
                 </div>
                 
                 <div class="form-group">
                     <label for="coursePrefix">Course Prefix:</label>
-                    <input type="text" id="coursePrefix" name="coursePrefix" required>
+                    <input type="text" id="coursePrefix" name="coursePrefix">
                 </div>
                 
                 <div class="form-group">
                     <label for="courseNumber">Course Number:</label>
-                    <input type="number" id="courseNumber" name="courseNumber" required>
+                    <input type="number" id="courseNumber" name="courseNumber" >
                 </div>
                 
                 <div class="form-group">
                     <label for="courseSection">Course Section:</label>
-                    <input type="number" id="courseSection" name="courseSection" required>
+                    <input type="number" id="courseSection" name="courseSection" >
                 </div>
                 <button>Submit</button>
             </form>  
