@@ -11,18 +11,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let fields = ["First Name", "Last Name", "Semester", "Year", "Course Prefix", "Course Number", "Course Section"]
 
-        let enteredValues = [firstName, lastName,semester,year,coursePrefix, courseNumber, courseSection];
-
+        let enteredValues = [firstName, lastName, semester, year, coursePrefix, courseNumber, courseSection];
 
         for (let i = 0; i < enteredValues.length; i++){
             if (enteredValues[i] == ""){
                 alert("Please enter value for " + fields[i]);
             }
+        }
 
+        let firstNameSyntax = /^[\s\S]+$/;
+        let valid = firstNameSyntax.test(firstName);
+        if (valid != true){
+            alert("Please enter a string")
+        }
+
+        let lastNameSyntax = /^[\s\S]+$/;
+        valid = lastNameSyntax.test(lastName);
+        if (valid != true){
+            alert("Please enter a string");
         }
 
         let yearSyntax = /^\d{4}$/;
-        let valid = yearSyntax.test(year);
+        valid = yearSyntax.test(year);
         if (valid != true){
             alert("Please enter a four digit year");
         }else if (year < 2025){
@@ -43,7 +53,11 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Please enter a 3 digit number less than 499");
         }
 
-        alert("Submitted Successfully");
+        let sectionSyntax = /^\d{2}$/;
+        valid = sectionSyntax.test(courseSection);
+        if (valid != true){
+            alert("Please enter a 2 digit number");
+        }
 
     });
 });
