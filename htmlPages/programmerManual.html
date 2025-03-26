@@ -386,7 +386,28 @@
                     <dd>Exmaples include "01", "02", "03", etc.</dd>
             </dl>
     <h2 id="function-desc">Function Descriptions</h2>
-        <p>There are currently no functions implemented.</p>
+        <p>Click to jump to javascript file: <a href="#submit-popup">submitPopUp.js</a>
+        </p>
+        
+        <h3 id="submit-popup">submitPopUp.js</h3>
+        <dl>
+            <dt>on_load</dt>
+                <dd>Upon DOM content loading, get the whole form element and create an event listener for the form's submit button.</dd>
+            <dt>on_submit</dt>
+                <dd>Called by upon_load's event listener, on submit button press get form data using get_form_data and create the
+                    alert pop-up (using a string created by format_alert_output).
+                </dd>
+            <dt>get_form_data</dt>
+                <dd>Called by on_submit, search the form for label-input field pairs in each form-group in the form-container
+                    and map them to key/value pairs where the key is label's textContent attribute and the value is the input field's
+                    value attribute.
+                </dd>
+            <dt>format_alert_output</dt>
+                <dd>Called by on_submit, take the form information map created by get_form_data and use it to generate a string
+                    for the alert box. This string reads as a multi-line text box with each line as one key/value (field/value) pair
+                    and a title on the first line.
+                </dd>
+        </dl>
     <footer>
         Web Development Project by Ian Yarwood, Corey Verkouteren, and Aditya Shah
     </footer>
