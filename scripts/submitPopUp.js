@@ -1,4 +1,5 @@
 // start listening for submit on page full load
+/*
 function on_load(event) {
     // get form element from document
     const form = document.querySelector('.form-container');
@@ -9,14 +10,14 @@ function on_load(event) {
         on_submit(e);
 });
 }
-
-
+*/
+/*
 // when submit happnes translate form data to alert
 function on_submit(event) {
     const form_data = get_form_data(event.target);
     alert(format_alert_output(form_data));
 }
-
+*/
 
 // get input data from the form and translate it to a map
 function get_form_data(form_container) {
@@ -40,7 +41,12 @@ function format_alert_output(form_data) {
     return output_string
 }
 
+export function triggerPopUp(formElement) {
+    const formData = get_form_data(formElement);
+    alert(format_alert_output(formData));
+}
 
 document.addEventListener("DOMContentLoaded", function(e) {
     on_load(e);
 });
+
