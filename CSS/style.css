@@ -92,3 +92,7 @@ form button:hover{
     justify-content: space-between;
     margin-bottom: 15px;
 }
+
+div[hidden] {
+    display: none !important;
+}

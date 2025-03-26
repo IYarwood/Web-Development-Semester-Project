@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="../CSS/style.css">
     <script src="../scripts/submitPopUp.js"></script> 
     <script src="../scripts/addCourseValidation.js"></script> 
+    <script src="../scripts/daysTimeDropdown.js"></script>
 </head>
 <body>
     <header>Add Course</header>
+    
     <nav>
         <ul>
             <li><a href="main.html">Home</a></li>
@@ -23,6 +25,7 @@
             <li><a href="programmerManual.html">Programmer Manual</a></li>
         </ul>
     </nav>
+
     <main>
         <div class="form-container">
             <form id="form">
@@ -66,18 +69,19 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="days">Days Offered:</label>
-                    <select id="days" name="days" required>
-                        <option value="mwf">Monday, Wednesday, Friday</option>
-                        <option value="mw">Monday, Wednesday</option>
-                        <option value="tth">Tuesday, Thursday</option>
-                        <option value="m">Monday</option>
-                        <option value="t">Tuesday</option>
-                        <option value="th">Thursday</option>
-                    </select>
+                <label for="days">Days Offered:</label>
+                <select id="days" name="days" required>
+                    <option value="" disabled selected>Select Days...</option>
+                    <option value="mwf">Monday, Wednesday, Friday</option>
+                    <option value="mw">Monday, Wednesday</option>
+                    <option value="tth">Tuesday, Thursday</option>
+                    <option value="m">Monday</option>
+                    <option value="t">Tuesday</option>
+                    <option value="th">Thursday</option>
+                </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="mwfContainer" hidden>
                     <label for="mwfTime">Monday, Wednesday, Friday:</label>
                     <select id="mwfTime" name="mwfTime">
                         <option value="mwf8">8:00 AM - 8:50 AM</option>
@@ -88,39 +92,39 @@
                         <option value="mwf1">1:00 PM - 1:50 PM</option>
                         <option value="mwf2">2:00 PM - 2:50 PM</option>
                         <option value="mwf3">3:00 PM - 3:50 PM</option>
-                    </select>
+                </select>
                 </div>
-                
-                <div class="form-group">
-                    <label for="mwTime">Monday, Wednesday:</label>
-                    <select id="mwTime" name="mwTime">
-                        <option value="mw9">9:00 AM - 10:50 AM</option>
-                        <option value="mw1">1:00 PM - 2:15 PM</option>
-                        <option value="mw12">1:00 PM - 2:50 PM</option>
-                        <option value="mw2">2:00 PM - 3:15 PM</option>
-                    </select>
+
+                <div class="form-group" id="mwContainer" hidden>
+                <label for="mwTime">Monday, Wednesday:</label>
+                <select id="mwTime" name="mwTime">
+                    <option value="mw9">9:00 AM - 10:50 AM</option>
+                    <option value="mw1">1:00 PM - 2:15 PM</option>
+                    <option value="mw12">1:00 PM - 2:50 PM</option>
+                    <option value="mw2">2:00 PM - 3:15 PM</option>
+                </select>
                 </div>
-                
-                <div class="form-group">
-                    <label for="tthTime">Tuesday, Thursday:</label>
-                    <select id="tthTime" name="tthTime">
-                        <option value="tth8">8:00 AM - 9:15 AM</option>
-                        <option value="tth9">9:30 AM - 10:45 AM</option>
-                        <option value="tth11">11:00 AM - 12:15 PM</option>
-                        <option value="tth1">1:00 PM - 2:15 PM</option>
-                        <option value="tth2">2:30 PM - 3:45 PM</option>
-                    </select>
+
+                <div class="form-group" id="tthContainer" hidden>
+                <label for="tthTime">Tuesday, Thursday:</label>
+                <select id="tthTime" name="tthTime">
+                    <option value="tth8">8:00 AM - 9:15 AM</option>
+                    <option value="tth9">9:30 AM - 10:45 AM</option>
+                    <option value="tth11">11:00 AM - 12:15 PM</option>
+                    <option value="tth1">1:00 PM - 2:15 PM</option>
+                    <option value="tth2">2:30 PM - 3:45 PM</option>
+                </select>
                 </div>
-                
-                <div class="form-group">
-                    <label for="singleDayTime">Any Single Day:</label>
-                    <select id="singleDayTime" name="singleDayTime">
-                        <option value="single1">1:00 PM - 4:00 PM</option>
-                        <option value="single2">2:00 PM - 5:00 PM</option>
-                        <option value="single3">7:00 PM - 9:30 PM</option>
-                    </select>
+
+                <div class="form-group" id="singleContainer" hidden>
+                <label for="singleDayTime">Any Single Day:</label>
+                <select id="singleDayTime" name="singleDayTime">
+                    <option value="single1">1:00 PM - 4:00 PM</option>
+                    <option value="single2">2:00 PM - 5:00 PM</option>
+                    <option value="single3">7:00 PM - 9:30 PM</option>
+                </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="creditHours">Credit Hours:</label>
                     <input type="number" id="creditHours" name="creditHours" required>
