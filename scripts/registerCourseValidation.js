@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Course Prefix is required");
             error=true;
         }else if (valid != true){
-            alert("Please enter a 3,4 letter Course Prefix");
+            alert("Please enter a 3 or 4 letter Course Prefix");
             error=true;
         }
 

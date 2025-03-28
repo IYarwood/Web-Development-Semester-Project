@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Course Prefix is required");
             error=true;
         }else if (valid != true){
-            alert("Please enter a 3,4 letter Course Prefix");
+            alert("Please enter a 3 or 4 letter Course Prefix");
             error=true;
         }
 
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(room)
         valid = roomNumberSyntax.test(room);
         if (valid != true){
-            alert("Please enter a string and digits for Room (Shelby 23b)");
+            alert("Please enter a string and 2 or 3 digits for Room (Shelby 23b)");
             error=true;
         }
 
