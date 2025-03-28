@@ -74,25 +74,31 @@
             </p>
             <dl>
                 <dt>First Name</dt>
-                    <dd>The enrolling student's first name</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
-                    <dd>Examples include "John", "Jane", "Mark", etc.</dd>
+                    <dd>The first name of the student dropping the course</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
+                    <dd>Examples include "John", "Lee John", "Mark", etc.</dd>
                 <dt>Last Name</dt>
-                    <dd>The enrolling student's last name</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
+                    <dd>The last name of the student dropping the course</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
                     <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
                 <dt>Year</dt>
-                    <dd>The enrolling student's college year level</dd>
-                    <dd>No abbrevations such as "Sr."</dd>
-                    <dd>Options include "Freshman", "Sophomore", "Junior", and "Senior"</dd>
+                    <dd>The year the class to be dropped takes part in</dd>
+                    <dd>Required</dd>
+                    <dd>4-digit numbers only</dd>
+                    <dd>Examples include "2025", "2028", etc.</dd>
                 <dt>Student Major</dt>
                     <dd>The enrolling student's college major, fully typed</dd>
-                    <dd>No abbrevations such as "CS" or "Comp. Sci.", separate multiple majors with a comma</dd>
+                    <dd>Not required</dd>
+                    <dd>Spaces allowed</dd>
                     <dd>Examples include "Computer Science", "Math", "Computer Science, Physics", etc.</dd>
                 <dt>Email Address</dt>
                     <dd>The enrolling student's preferred email address we may contact</dd>
-                    <dd>Email must be valid and include the @, provider, and domain extension (ex. @gmail.com)</dd>
-                    <dd>Examples include "lok006@marietta.edu", "rumblesett@gmail.com", etc.</dd>
+                    <dd>Must follow the format abc123@marietta.edu. The first three characters must be
+                        letters. The next three characters must be numbers. The email address must end with
+                        @marietta.edu</dd>
+                    <dd>Examples include "lok006@marietta.edu" etc.</dd>
             </dl>
         <h3 id="pd-add-instructor">Add Instructor</h3>
             <p>At the top of this webpage you will first see the page title/header, followed by our navigation
@@ -103,25 +109,30 @@
             </p>
             <dl>
                 <dt>First Name</dt>
-                    <dd>The added instructor's first name</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
-                    <dd>Examples include "John", "Jane", "Mark", etc.</dd>
+                    <dd>The first name of the student dropping the course</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
+                    <dd>Examples include "John", "Lee John", "Mark", etc.</dd>
                 <dt>Last Name</dt>
-                    <dd>The added instructor's last name</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
+                    <dd>The last name of the student dropping the course</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
                     <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
                 <dt>Department</dt>
                     <dd>The added instructor's department</dd>
-                    <dd>No abbrevations such as "CS" or "Comp Sci", multiple departments separated by commas</dd>
+                    <dd>Not required</dd>
+                    <dd>Spaces allowed</dd>
                     <dd>Examples include "Math", "Philosophy", "Math, English", etc.</dd>
                 <dt>Rank</dt>
                     <dd>The added instructor's college rank, fully typed</dd>
-                    <dd>No abbrevations such as "Prof."</dd>
                     <dd>Options include "Instructor", "Assistant Professor", "Associate Professor", and "Professor"</dd>
                 <dt>Email Address</dt>
                     <dd>The added instructor's preferred email address we may contact</dd>
-                    <dd>Email must be valid and include the @, provider, and domain extension (ex. @gmail.com)</dd>
-                    <dd>Examples include "lok006@marietta.edu", "rumblesett@gmail.com", etc.</dd>
+                    <dd>Required</dd>
+                    <dd>Must follow the format abc123@marietta.edu. The first three characters must be
+                        letters. The next three characters must be numbers. The email address must end with
+                        @marietta.edu</dd>
+                    <dd>Examples include "lok006@marietta.edu" etc.</dd>
             </dl>
         <h3 id="pd-add-course">Add Course</h3>
             <p>At the top of this webpage you will first see the page title/header, followed by our navigation
@@ -132,42 +143,48 @@
             </p>
             <dl>
                 <dt>Semester</dt>
-                    <dd>What college semester the course will take place in</dd>
-                    <dd>No abbrevations such as "Spg."</dd>
+                    <dd>The semester the class to be dropped takes part in</dd>
+                    <dd>Required</dd>
+                    <dd>Pick an option</dd>
                     <dd>Options include "Fall", "Spring", and "Summer"</dd>
                 <dt>Year</dt>
-                    <dd>The year the desired class takes part in</dd>
+                    <dd>The year the class to be dropped takes part in</dd>
+                    <dd>Required</dd>
                     <dd>4-digit numbers only</dd>
                     <dd>Examples include "2025", "2028", etc.</dd>
                 <dt>Course Prefix</dt>
-                    <dd>The course's department prefix</dd>
-                    <dd>No short abbrevations such as "CS", and no full names like "Computer Science"</dd>
+                    <dd>The course to be dropped's department prefix</dd>
+                    <dd>Required</dd>
+                    <dd>3 or 4 capital letters</dd>
                     <dd>Examples include "CSCI", "PSYC", "MATH", etc.</dd>
                 <dt>Course Number</dt>
-                    <dd>The course's number</dd>
-                    <dd>Numbers only</dd>
+                    <dd>The course to dropped's course number</dd>
+                    <dd>Required</dd>
+                    <dd>3 digit numbers only, not larger than 499</dd>
                     <dd>Examples include "101", "330", "215", etc.</dd>
                 <dt>Course Section</dt>
-                    <dd>The course's section number</dd>
+                    <dd>The course to dropped's section number</dd>
+                    <dd>Required</dd>
                     <dd>Two-digit numbers only</dd>
                     <dd>Exmaples include "01", "02", "03", etc.</dd>
                 <dt>Course Name</dt>
                     <dd>The course's name</dd>
-                    <dd>No abbrevations like "Comp. Prgm."</dd>
                     <dd>Examples include "Computer Programming II", "Introduction to Philosophy", etc.</dd>
                 <dt>Room</dt>
                     <dd>The course's meeting location (building and room)</dd>
-                    <dd>No abbrevations like "DBRC"</dd>
-                    <dd>Examples include "Selby 240", "Hermann Fine Arts Center 103", etc.</dd>
+                    <dd>Not Required</dd>
+                    <dd>Must be formatted as a building name and room number. The building name will be a string
+                        that can have spaces. The room number can be 2 or 3 digits, and it may end with a letter</dd>
+                    <dd>Examples include "Selby 240", "Hermann Fine Arts Center 103a", etc.</dd>
                 <dt>Days Offered</dt>
                     <dd>The course's day schedule options</dd>
-                    <dd>Can only pick valid days, no abbreviations like "MWF", only one option may be picked</dd>
+                    <dd>Pick an option</dd>
                     <dd>Options include "Monday, Wednesday, Friday", "Monday, Wednesday", "Tuesday, Thursday", <br>
                         "Monday", "Tuesday", "Wednesday", and "Thursday"
                     </dd>
                 <dt>Time</dt>
                     <dd>The course's start-end time</dd>
-                    <dd>Must be a valid time for the selected day schedule</dd>
+                    <dd>Pick an option after Days Offered</dd>
                     <dd>Valid times:
                         <details>
                             <summary>Monday, Wednesday, Friday</summary>
@@ -212,20 +229,24 @@
                     </dd>
                 <dt>Credit Hours</dt>
                     <dd>The course's credit hour value</dd>
-                    <dd>Must be a number structured as 0.00</dd>
-                    <dd>Examples include "3.00", "1.00", and "2.75"</dd>
+                    <dd>Required</dd>
+                    <dd>Must be a number 0-4</dd>
+                    <dd>Examples include "3", "1", and "2"</dd>
                 <dt>Instructor First Name</dt>
                     <dd>The course's instructor's First name</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
-                    <dd>Examples include "John", "Jane", "Mark", etc.</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
+                    <dd>Examples include "John", "Lee John", "Mark", etc.</dd>
                 <dt>Instructor Last Name</dt>
                     <dd>The course's instructor's last name</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
-                    <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
+                    <dd>Examples include "Smith", "McStein", "Knowles Carter", etc.</dd>
                 <dt>Enrollment Cap</dt>
                     <dd>The course's maximum number of students</dd>
-                    <dd>Numbers only</dd>
-                    <dd>Examples include "20", "5", "100", etc.</dd>
+                    <dd>Required</dd>
+                    <dd>Two digit numbers only</dd>
+                    <dd>Examples include "20", "50", "10", etc.</dd>
             </dl>
         <h3 id="pd-register-course">Register Course</h3>
             <p>At the top of this webpage you will first see the page title/header, followed by our navigation
@@ -236,33 +257,40 @@
             </p>
             <dl>
                 <dt>First Name</dt>
-                    <dd>The registering student's first name</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
-                    <dd>Examples include "John", "Jane", "Mark", etc.</dd>
+                    <dd>The first name of the student dropping the course</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
+                    <dd>Examples include "John", "Lee John", "Mark", etc.</dd>
                 <dt>Last Name</dt>
-                    <dd>The registering student's last name</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
-                    <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
+                    <dd>The last name of the student dropping the course</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
+                    <dd>Examples include "Smith", "McStein", "Knowles Carter", etc.</dd>
                 <dt>Semester</dt>
-                    <dd>The semester the desired class takes part in</dd>
-                    <dd>No abbrevations such as "Sprg."</dd>
+                    <dd>The semester the class to be dropped takes part in</dd>
+                    <dd>Required</dd>
+                    <dd>Pick an option</dd>
                     <dd>Options include "Fall", "Spring", and "Summer"</dd>
                 <dt>Year</dt>
-                    <dd>The year the desired class takes part in</dd>
+                    <dd>The year the class to be dropped takes part in</dd>
+                    <dd>Required</dd>
                     <dd>4-digit numbers only</dd>
                     <dd>Examples include "2025", "2028", etc.</dd>
                 <dt>Course Prefix</dt>
-                    <dd>The desired course's department prefix</dd>
-                    <dd>No short abbrevations such as "CS", and no full names like "Computer Science"</dd>
+                    <dd>The course to be dropped's department prefix</dd>
+                    <dd>Required</dd>
+                    <dd>3 or 4 capital letters</dd>
                     <dd>Examples include "CSCI", "PSYC", "MATH", etc.</dd>
                 <dt>Course Number</dt>
-                    <dd>The desired course's number</dd>
-                    <dd>Numbers only</dd>
+                    <dd>The course to dropped's course number</dd>
+                    <dd>Required</dd>
+                    <dd>3 digit numbers only, not larger than 499</dd>
                     <dd>Examples include "101", "330", "215", etc.</dd>
                 <dt>Course Section</dt>
-                    <dd>The desired course's section number</dd>
+                    <dd>The course to dropped's section number</dd>
+                    <dd>Required</dd>
                     <dd>Two-digit numbers only</dd>
-                    <dd>Examples include "01", "02", "03", etc.</dd>
+                    <dd>Exmaples include "01", "02", "03", etc.</dd>
             </dl>
         <h3 id="pd-drop-course">Drop Course</h3>
             <p>At the top of this webpage you will first see the page title/header, followed by our navigation
@@ -274,30 +302,37 @@
             <dl>
                 <dt>First Name</dt>
                     <dd>The first name of the student dropping the course</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
-                    <dd>Examples include "John", "Jane", "Mark", etc.</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
+                    <dd>Examples include "John", "Lee John", "Mark", etc.</dd>
                 <dt>Last Name</dt>
                     <dd>The last name of the student dropping the course</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
+                    <dd>Required</dd>
+                    <dd>Spaces allowed</dd>
                     <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
                 <dt>Semester</dt>
                     <dd>The semester the class to be dropped takes part in</dd>
-                    <dd>No abbrevations such as "Sprg."</dd>
+                    <dd>Required</dd>
+                    <dd>Pick an option</dd>
                     <dd>Options include "Fall", "Spring", and "Summer"</dd>
                 <dt>Year</dt>
                     <dd>The year the class to be dropped takes part in</dd>
+                    <dd>Required</dd>
                     <dd>4-digit numbers only</dd>
                     <dd>Examples include "2025", "2028", etc.</dd>
                 <dt>Course Prefix</dt>
                     <dd>The course to be dropped's department prefix</dd>
-                    <dd>No short abbrevations such as "CS", and no full names like "Computer Science"</dd>
+                    <dd>Required</dd>
+                    <dd>3 or 4 capital letters</dd>
                     <dd>Examples include "CSCI", "PSYC", "MATH", etc.</dd>
                 <dt>Course Number</dt>
                     <dd>The course to dropped's course number</dd>
-                    <dd>Numbers only</dd>
+                    <dd>Required</dd>
+                    <dd>3 digit numbers only, not larger than 499</dd>
                     <dd>Examples include "101", "330", "215", etc.</dd>
                 <dt>Course Section</dt>
                     <dd>The course to dropped's section number</dd>
+                    <dd>Required</dd>
                     <dd>Two-digit numbers only</dd>
                     <dd>Exmaples include "01", "02", "03", etc.</dd>
             </dl>
