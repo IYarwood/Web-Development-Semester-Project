@@ -204,7 +204,6 @@
                     <dd>Options include "Monday, Wednesday, Friday", "Monday, Wednesday", "Tuesday, Thursday", <br>
                         "Monday", "Tuesday", "Wednesday", and "Thursday"
                     </dd>
-                <!--COME BACK TOO-->
                 <dt>Time</dt>
                     <dd>ID corresponds to day option above</dd>
                     <dd>ID: "mwfTime"</dd>
@@ -387,14 +386,14 @@
         
         <h3 id="submit-popup">submitPopUp.js</h3>
         <dl>
-            <dt>on_load</dt>
+            <dt>on_load (deprecated)</dt>
                 <dd>Upon DOM content loading, get the whole form element and create an event listener for the form's submit button.</dd>
-            <dt>on_submit</dt>
+            <dt>on_submit (deprecated)</dt>
                 <dd>Called by upon_load's event listener, on submit button press get form data using get_form_data and create the
                     alert pop-up (using a string created by format_alert_output).
                 </dd>
             <dt>get_form_data</dt>
-                <dd>Called by on_submit, search the form for label-input field pairs in each form-group in the form-container
+                <dd>Called by triggerPopUp, search the form for label-input field pairs in each form-group in the form-container
                     and map them to key/value pairs where the key is label's textContent attribute and the value is the input field's
                     value attribute.
                 </dd>
@@ -402,6 +401,9 @@
                 <dd>Called by on_submit, take the form information map created by get_form_data and use it to generate a string
                     for the alert box. This string reads as a multi-line text box with each line as one key/value (field/value) pair
                     and a title on the first line.
+                </dd>
+            <dt>triggerPopUp</dt>
+                <dd>Called in addCourseValidation.js in order to trigger get_form_data only after all checks are done without error.
                 </dd>
         </dl>
 
