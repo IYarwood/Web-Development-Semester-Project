@@ -41,7 +41,11 @@ function get_form_data(form_container, days, time) {
             }else if (input_data[i].value == time){
                 input_map["Time: "] = input_data[i].options[input_data[i].selectedIndex].textContent;
             }
-        }else{
+        }
+        else if(input_data[i].tagName == "SELECT"){
+            input_map[label_data[i].textContent] = input_data[i].options[input_data[i].selectedIndex].textContent;
+        }
+        else{
             input_map[label_data[i].textContent] = input_data[i].value;
         }
     }
