@@ -13,6 +13,17 @@ document.addEventListener("DOMContentLoaded", function() {
         let enrollmentCap = document.getElementById("enrollmentCap").value.trim();
         let room = document.getElementById("room").value.trim();
 
+        let days = document.querySelector("select[name='days']").value;
+        let time = "";
+        if (days == "mwf") {
+            time = document.querySelector("#mwfTime option:checked").value;
+        } else if (days == "mw") {
+            time = document.querySelector("#mwTime option:checked").value;
+        } else if (days == "tth") {
+            time = document.querySelector("#tthTime option:checked").value;
+        } else if (days == "m" || days == "t" || days == "th") {
+            time = document.querySelector("#singleDayTime option:checked").value;
+        }
         let error = false;
 
         let yearSyntax = /^\d{4}$/;
@@ -111,8 +122,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         if (error == false){
-            const formElement = document.getElementById("form")
-            triggerPopUp(formElement);
+            const formElement = document.getElementById("form");
+            console.log(time);
+            triggerPopUp(formElement, days, time);
         }
     });
 });

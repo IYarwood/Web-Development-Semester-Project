@@ -82,32 +82,31 @@
                     <dd>ID: "firstName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The enrolling student's first name</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "John", "Jane", "Mark", etc.</dd>
                 <dt>Last Name</dt>
                     <dd>ID: "lastName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The enrolling student's last name</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
                 <dt>Year</dt>
                     <dd>ID: "year"</dd>
                     <dd>Type: Select Field</dd>
                     <dd>The enrolling student's college year level</dd>
-                    <dd>No abbrevations such as "Sr."</dd>
                     <dd>Options include "Freshman", "Sophomore", "Junior", and "Senior"</dd>
                 <dt>Student Major</dt>
                     <dd>ID: "major"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The enrolling student's college major, fully typed</dd>
-                    <dd>No abbrevations such as "CS" or "Comp. Sci.", separate multiple majors with a comma</dd>
+                    <dd>Must be a string, spaces allowed</dd>
                     <dd>Examples include "Computer Science", "Math", "Computer Science, Physics", etc.</dd>
                 <dt>Email Address</dt>
                     <dd>ID:"email"</dd>
                     <dd>Type: Email Field</dd>
                     <dd>The enrolling student's preferred email address we may contact</dd>
-                    <dd>Email must be valid and include the @, provider, and domain extension (ex. @gmail.com)</dd>
-                    <dd>Examples include "lok006@marietta.edu", "rumblesett@gmail.com", etc.</dd>
+                    <dd>Email must be a valid marietta email and include the @marietta.edu</dd>
+                    <dd>Example "lok006@marietta.edu"</dd>
                 <dt>Submit Button</dt>
             </dl>
         <h3 id="pd-add-instructor">Add Instructor</h3>
@@ -122,32 +121,31 @@
                     <dd>ID: "firstName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The added instructor's first name</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "John", "Jane", "Mark", etc.</dd>
                 <dt>Last Name</dt>
                     <dd>ID: "lastName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The added instructor's last name</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
                 <dt>Department</dt>
                     <dd>ID: "department"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The added instructor's department</dd>
-                    <dd>No abbrevations such as "CS" or "Comp Sci", multiple departments separated by commas</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "Math", "Philosophy", "Math, English", etc.</dd>
                 <dt>Rank</dt>
                     <dd>ID: "rank"</dd>
                     <dd>Type: Select Field</dd>
-                    <dd>The added instructor's college rank, fully typed</dd>
-                    <dd>No abbrevations such as "Prof."</dd>
+                    <dd>The added instructor's college rank</dd>
                     <dd>Options include "Instructor", "Assistant Professor", "Associate Professor", and "Professor"</dd>
                 <dt>Email Address</dt>
                     <dd>ID: "email"</dd>
                     <dd>Type: Email Field</dd>
                     <dd>The added instructor's preferred email address we may contact</dd>
-                    <dd>Email must be valid and include the @, provider, and domain extension (ex. @gmail.com)</dd>
-                    <dd>Examples include "lok006@marietta.edu", "rumblesett@gmail.com", etc.</dd>
+                    <dd>Email must be a valid marietta email and include the @marietta.edu</dd>
+                    <dd>Example "lok006@marietta.edu"</dd>
             </dl>
         <h3 id="pd-add-course">Add Course</h3>
             <p>At the top of this webpage you will first see the page title/header, followed by our navigation
@@ -161,7 +159,6 @@
                     <dd>ID: "semester"</dd>
                     <dd>Type: Select Field</dd>
                     <dd>What college semester the course will take place in</dd>
-                    <dd>No abbrevations such as "Spg."</dd>
                     <dd>Options include "Fall", "Spring", and "Summer"</dd>
                 <dt>Year</dt>
                     <dd>ID: "year"</dd>
@@ -173,13 +170,13 @@
                     <dd>ID: "coursePrefix"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The course's department prefix</dd>
-                    <dd>No short abbrevations such as "CS", and no full names like "Computer Science"</dd>
+                    <dd>3 or 4 Capital Character Prefix</dd>
                     <dd>Examples include "CSCI", "PSYC", "MATH", etc.</dd>
                 <dt>Course Number</dt>
                     <dd>ID: "courseNumber"</dd>
                     <dd>Type: Number Field</dd>
                     <dd>The course's number</dd>
-                    <dd>Numbers only</dd>
+                    <dd>Three-digit Numbers only</dd>
                     <dd>Examples include "101", "330", "215", etc.</dd>
                 <dt>Course Section</dt>
                     <dd>ID: "courseSection"</dd>
@@ -191,22 +188,23 @@
                     <dd>ID: "courseName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The course's name</dd>
-                    <dd>No abbrevations like "Comp. Prgm."</dd>
+                    <dd>Must be a string, spaces allowed</dd>
                     <dd>Examples include "Computer Programming II", "Introduction to Philosophy", etc.</dd>
                 <dt>Room</dt>
                     <dd>ID: "room"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The course's meeting location (building and room)</dd>
-                    <dd>No abbrevations like "DBRC"</dd>
+                    <dd>Must be formatted as a building name and room number. The building name will be a string
+                        that can have spaces. The room number can be 2 or 3 digits, and it may end with a letter.</dd>
                     <dd>Examples include "Selby 240", "Hermann Fine Arts Center 103", etc.</dd>
                 <dt>Days Offered</dt>
                     <dd>ID: "days"</dd>
                     <dd>Type: Select Field</dd>
                     <dd>The course's day schedule options</dd>
-                    <dd>Can only pick valid days, no abbreviations like "MWF", only one option may be picked</dd>
                     <dd>Options include "Monday, Wednesday, Friday", "Monday, Wednesday", "Tuesday, Thursday", <br>
                         "Monday", "Tuesday", "Wednesday", and "Thursday"
                     </dd>
+                <!--COME BACK TOO-->
                 <dt>Time</dt>
                     <dd>ID corresponds to day option above</dd>
                     <dd>ID: "mwfTime"</dd>
@@ -262,26 +260,26 @@
                     <dd>ID: "creditHours"</dd>
                     <dd>Type: Number Field</dd>
                     <dd>The course's credit hour value</dd>
-                    <dd>Must be a number structured as 0.00</dd>
-                    <dd>Examples include "3.00", "1.00", and "2.75"</dd>
+                    <dd>Must be a number 1-4</dd>
+                    <dd>Examples include (1,2,3,4)</dd>
                 <dt>Instructor First Name</dt>
                     <dd>ID: "instructorFirstName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The course's instructor's First name</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "John", "Jane", "Mark", etc.</dd>
                 <dt>Instructor Last Name</dt>
                     <dd>ID: "instructorLastName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The course's instructor's last name</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
                 <dt>Enrollment Cap</dt>
                     <dd>ID: "enrollmentCap"</dd>
                     <dd>Type: Number Field</dd>
                     <dd>The course's maximum number of students</dd>
-                    <dd>Numbers only</dd>
-                    <dd>Examples include "20", "5", "100", etc.</dd>
+                    <dd>2-digit numbers only</dd>
+                    <dd>Examples include "20", "05", "10", etc.</dd>
             </dl>
         <h3 id="pd-register-course">Register Course</h3>
             <p>At the top of this webpage you will first see the page title/header, followed by our navigation
@@ -295,19 +293,18 @@
                     <dd>ID: "firstName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The registering student's first name</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "John", "Jane", "Mark", etc.</dd>
                 <dt>Last Name</dt>
                     <dd>ID: "lastName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The registering student's last name</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
                 <dt>Semester id</dt>
                     <dd>ID: "semester"</dd>
                     <dd>Type: Select Field</dd>
                     <dd>The semester the desired class takes part in</dd>
-                    <dd>No abbrevations such as "Sprg."</dd>
                     <dd>Options include "Fall", "Spring", and "Summer"</dd>
                 <dt>Year</dt>
                     <dd>ID: "year"</dd>
@@ -319,13 +316,13 @@
                     <dd>ID: "coursePrefix"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The desired course's department prefix</dd>
-                    <dd>No short abbrevations such as "CS", and no full names like "Computer Science"</dd>
+                    <dd>3 or 4 Capital Character Prefix</dd>
                     <dd>Examples include "CSCI", "PSYC", "MATH", etc.</dd>
                 <dt>Course Number</dt>
                     <dd>ID: "courseNumber"</dd>
                     <dd>Type: Number Field</dd>
                     <dd>The desired course's number</dd>
-                    <dd>Numbers only</dd>
+                    <dd>3-digit Numbers only</dd>
                     <dd>Examples include "101", "330", "215", etc.</dd>
                 <dt>Course Section</dt>
                     <dd>ID: "courseSection"</dd>
@@ -346,19 +343,18 @@
                     <dd>ID: "firstName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The first name of the student dropping the course</dd>
-                    <dd>No abbrevations such as "MJ", and no titles such as "Dr." or "Mr."</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "John", "Jane", "Mark", etc.</dd>
                 <dt>Last Name</dt>
                     <dd>ID: "lastName"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The last name of the student dropping the course</dd>
-                    <dd>No abbrevations such as "Jr.", double last names hyphenated (see below)</dd>
+                    <dd>Must be string, spaces are allowed</dd>
                     <dd>Examples include "Smith", "McStein", "Knowles-Carter", etc.</dd>
                 <dt>Semester</dt>
                     <dd>ID: "semester"</dd>
                     <dd>Type: Select Field</dd>
                     <dd>The semester the class to be dropped takes part in</dd>
-                    <dd>No abbrevations such as "Sprg."</dd>
                     <dd>Options include "Fall", "Spring", and "Summer"</dd>
                 <dt>Year</dt>
                     <dd>ID: "year"</dd>
@@ -370,13 +366,13 @@
                     <dd>ID: "coursePrefix"</dd>
                     <dd>Type: Text Field</dd>
                     <dd>The course to be dropped's department prefix</dd>
-                    <dd>No short abbrevations such as "CS", and no full names like "Computer Science"</dd>
+                    <dd>3 or 4 Capital Character Prefix</dd>
                     <dd>Examples include "CSCI", "PSYC", "MATH", etc.</dd>
                 <dt>Course Number</dt>
                     <dd>ID: "courseNumber"</dd>
                     <dd>Type: Number Field</dd>
                     <dd>The course to dropped's course number</dd>
-                    <dd>Numbers only</dd>
+                    <dd>3-digit Numbers only</dd>
                     <dd>Examples include "101", "330", "215", etc.</dd>
                 <dt>Course Section</dt>
                     <dd>ID: "courseSection"</dd>
@@ -408,6 +404,47 @@
                     and a title on the first line.
                 </dd>
         </dl>
+
+        <h3 id="addCourseValidation">addCourseValidation.js</h3>
+        <dl>
+            <dt>Anonymous Function</dt>
+                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
+                    expression checks based on patterns to match the descriptions listed above.
+                </dd>
+        </dl>
+
+        <h3 id="addInstructorValidation">addInstructorValidation.js</h3>
+        <dl>
+            <dt>Anonymous Function</dt>
+                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
+                    expression checks based on patterns to match the descriptions listed above.
+                </dd>
+        </dl>
+
+        <h3 id="dropCourseValidation">dropCourseValidation.js</h3>
+        <dl>
+            <dt>Anonymous Function</dt>
+                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
+                    expression checks based on patterns to match the descriptions listed above.
+                </dd>
+        </dl>
+
+        <h3 id="enrollStudentValidation">enrollStudentValidation.js</h3>
+        <dl>
+            <dt>Anonymous Function</dt>
+                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
+                    expression checks based on patterns to match the descriptions listed above.
+                </dd>
+        </dl>
+
+        <h3 id="registerCourseValidation">registerCourseValidation.js</h3>
+        <dl>
+            <dt>Anonymous Function</dt>
+                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
+                    expression checks based on patterns to match the descriptions listed above.
+                </dd>
+        </dl>
+
     <footer>
         Web Development Project by Ian Yarwood, Corey Verkouteren, and Aditya Shah
     </footer>
