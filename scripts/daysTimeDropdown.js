@@ -1,32 +1,45 @@
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     const daysSelect = document.getElementById('days');
-   
-   
-    const mwfContainer = document.getElementById('mwfContainer');
-    const mwContainer = document.getElementById('mwContainer');
-    const tthContainer = document.getElementById('tthContainer');
-    const singleContainer = document.getElementById('singleContainer');
+    const timesSelect = document.getElementById("times");
+
+    const mwfOptions = document.getElementsByClassName("mwf");
+    const mwOptions = document.getElementsByClassName("mw");
+    const tthOptions = document.getElementsByClassName("tth");
+    const singleOptions = document.getElementsByClassName("single");
+
+    const allOptions = {
+      "mwf": mwfOptions, 
+      "mw": mwOptions, 
+      "tth": tthOptions, 
+      "single": singleOptions
+    };
  
     function showRelevantTimeDropdown() {
-      mwfContainer.hidden = true;
-      mwContainer.hidden = true;
-      tthContainer.hidden = true;
-      singleContainer.hidden = true;
+      // hide all time options
+      for (optionList of Object.values(allOptions)) {
+        for (let i=0; i < optionList.length; i++) {
+          optionList[i].hidden = true;
+        };
+      }
+
+      // reset selected time if they change day
+      timesSelect.selectedIndex = 0;
  
+      // reveal selected days' times
       switch (daysSelect.value) {
         case 'mwf':
-          mwfContainer.hidden = false;
-          break;
         case 'mw':
-          mwContainer.hidden = false;
-          break;
         case 'tth':
-          tthContainer.hidden = false;
+          for (let i=0; i < allOptions[daysSelect.value].length; i++) {
+            allOptions[daysSelect.value][i].hidden = false;
+          };
           break;
         case 'm':
         case 't':
         case 'th':
-          singleContainer.hidden = false;
+          for (let i=0; i < allOptions["single"].length; i++) {
+            allOptions["single"][i].hidden = false;
+          };
           break;
         default:
           break;
