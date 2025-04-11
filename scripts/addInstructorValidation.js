@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (error == false){
             const formElement = document.getElementById("form")
             triggerPopUp(formElement);
+            formElement.submit();
         }
     });
 });
