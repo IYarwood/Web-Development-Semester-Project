@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
         let courseNumber = document.getElementById("courseNumber").value.trim();
         let courseSection = document.getElementById("courseSection").value.trim();
         let creditHours = document.getElementById("creditHours").value.trim();
-        let instructorFirstName = document.getElementById("instructorFirstName").value.trim();
-        let instructorLastName = document.getElementById("instructorLastName").value.trim();
+        //let instructorFirstName = document.getElementById("instructorFirstName").value.trim();
+        //let instructorLastName = document.getElementById("instructorLastName").value.trim();
         let enrollmentCap = document.getElementById("enrollmentCap").value.trim();
         let room = document.getElementById("room").value.trim();
 
@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
             error=true;
         }
 
+        /*
         let instructorFirstNameSyntax = /^[\s\S]+$/;
         valid = instructorFirstNameSyntax.test(instructorFirstName);
         if (instructorFirstName == ""){
@@ -110,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Please enter a string for Instructor Last Name");
             error=true;
         }
-
+        */
         let enrollmentCapSyntax = /^\d{2}$/;
         valid = enrollmentCapSyntax.test(enrollmentCap);
         if (enrollmentCap == ""){
@@ -125,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const formElement = document.getElementById("form");
             console.log(time);
             triggerPopUp(formElement, days, time);
+            formElement.submit();
         }
     });
 });
