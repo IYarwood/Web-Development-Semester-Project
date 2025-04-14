@@ -19,8 +19,8 @@ function validate_form(submitEvent) {
         "days": validate_none,
         "times": validate_none,
         "creditHours": validate_credit_hours,
-        "instructorFirstName": validate_firstname,
-        "instructorLastName": validate_lastname,
+        "instructorFirstName": validate_none,
+        "instructorLastName": validate_none,
         "enrollmentCap": validate_enrollment_cap,
         "firstName": validate_firstname,
         "lastName": validate_lastname
@@ -28,9 +28,11 @@ function validate_form(submitEvent) {
 
     formObject = submitEvent.srcElement;
     allFormInputs = formObject.querySelectorAll(".form-group > *:not(:first-child)");
+    console.log(allFormInputs);
 
     for (let i=0; i < allFormInputs.length; i++) {
-        inputElement = allFormInputs[i]
+        inputElement = allFormInputs[i];
+        console.log(inputElement.id, inputElement.value, "test");
         isValid = inputObject[inputElement.id](inputElement.value.trim());
     }
     
