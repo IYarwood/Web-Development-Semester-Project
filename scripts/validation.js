@@ -39,6 +39,7 @@ function validate_form(submitEvent) {
             console.log("validation error on", allFormInputs[i]);
         }
     }
+    formObject.submit();
     
 }
 

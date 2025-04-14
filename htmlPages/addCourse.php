@@ -18,8 +18,8 @@
             <li><a href="studentEnroll.html">Student Enrollment</a></li>
             <li><a href="addInstructor.html">Add Instructor</a></li>
             <li><a href="addCourse.php">Add Course</a></li>
-            <li><a href="registerCourse.html">Register Course</a></li>
-            <li><a href="dropCourse.html">Drop Course</a></li>
+            <li><a href="registerCourse.php">Register Course</a></li>
+            <li><a href="dropCourse.php">Drop Course</a></li>
             <li><a href="userManual.html">User Manual</a></li>
             <li><a href="programmerManual.html">Programmer Manual</a></li>
         </ul>
@@ -114,7 +114,7 @@
 
                 <div class="form-group">
                     <label for="instructor">Instructor</label>
-                    <select id="instructor">
+                    <select name="instructor" id="instructor">
                         <?php
                             try{
                                 $connString = "mysql:host=localhost;dbname=registrationSystem";
@@ -123,13 +123,10 @@
                                 $pdo = new PDO($connString, $user, $pass);
                                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                 
-                                if ($pdo){
-                                    echo "databse connected";
-                                }
                                 $sql = "SELECT * FROM instructor";
                                 $result = $pdo->query($sql);
                                 while ($row = $result->fetch()) {
-                                    echo "<option value='{$row['id']}'>{$row['firstName']} {$row['lastName']}</option>";
+                                    echo "<option value={$row['id']}>{$row['firstName']} {$row['lastName']}</option>";
                                 }
                                 $pdo = null;
                             }

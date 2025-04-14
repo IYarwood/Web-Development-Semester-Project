@@ -2,6 +2,7 @@ import { triggerPopUp } from './submitPopUp.js';
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();
+        /*
         let firstName = document.getElementById("firstName").value.trim();
         let lastName = document.getElementById("lastName").value.trim();
         let semester = document.getElementById("semester").value.trim();
@@ -9,9 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let coursePrefix = document.getElementById("coursePrefix").value.trim();
         let courseNumber = document.getElementById("courseNumber").value.trim();
         let courseSection = document.getElementById("courseSection").value.trim();
-
+        */
         let error = false;
-
+        /*
         let firstNameSyntax = /^[\s\S]+$/;
         let valid = firstNameSyntax.test(firstName);
         if (firstName == ""){
@@ -77,10 +78,11 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Please enter a 2 digit number for Course Section");
             error=true;
         }
-
+        */
         if (error == false){
             const formElement = document.getElementById("form")
             triggerPopUp(formElement);
+            formElement.submit()
         }
     });
 });
