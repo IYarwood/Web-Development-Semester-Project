@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const options = document.querySelectorAll("#person option");
-
+    const table = document.querySelector("#instructorTable");
+    table.hidden=true;
     for (let i = 0; i<options.length; i++){
         options[i].hidden = true;
     }
@@ -8,9 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const people = document.querySelector("#type");
     people.addEventListener("change", function(){
         const type = this.value;
-        console.log(type);
         for (let i = 0; i<options.length; i++){
-            console.log(options[i]);
             if (options[i].className == type){
                 options[i].hidden = false;
             }
@@ -23,9 +22,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const person = document.querySelector("#person");
     person.addEventListener("change", function(){
+        const type = document.querySelector("#type").value;
         const person = this.value;
-        
-
+        if (type == "instructor"){
+            table.hidden = false;
+        }
     });
 });
 

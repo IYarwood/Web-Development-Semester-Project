@@ -58,7 +58,6 @@
                                 while ($row = $result->fetch()) {
                                     echo "<option class='instructor' value={$row['id']}>{$row['firstName']} {$row['lastName']}</option>";
                                 }
-                                $pdo = null;
                             }
                             catch (PDOException $e) {
                                 echo "Failed";
@@ -69,6 +68,32 @@
                 </div>
             </form>  
         </div>
+        <div>
+            <table class="student">
+            </table>
+        </div>
+        <div>
+        <table class="instructor" id="instructorTable">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <?php
+            $sql = "SELECT * FROM instructor";
+            $result = $pdo->query($sql);
+            while ($row = $result->fetch()) {
+                echo 
+                "<tr class='instructor' value={$row['id']}>
+                    <td>{$row['firstName']}</td>
+                    <td>{$row['lastName']}</td>
+                </tr>";
+            }
+
+            $pdo = null;
+            ?>
+        </table>
+        </div>
+        
     </main>  
     <footer>
         Web Development Project by Ian Yarwood, Corey Verkouteren, and Aditya Shah
