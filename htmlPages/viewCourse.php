@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../CSS/style.css">
     <script type="module" src="../scripts/viewCourse.js"></script>
 </head>
-<header>Register Course</header>
+<header>View Courses</header>
 <nav>
     <ul>
         <li><a href="main.html">Home</a></li>
@@ -26,7 +26,7 @@
 <body>
     <main>
         <div class="form-container">
-            <form action="../php/registerCourseSubmit.php" method="POST" id="form">
+            <form action="" method="POST" id="form">
             <div class="form-group">
                     <label for="type">Type</label>
                     <select name="type" id="type">
@@ -69,23 +69,81 @@
             </form>  
         </div>
         <div>
-            <table class="student">
+            <table class="student" id="studentTable">
+            <tr>
+                <th>Course Prefix</th>
+                <th>Course Number</th>
+                <th>Course Section</th>
+                <th>Course Name</th>
+                <th>Days</th>
+                <th>Time</th>
+                <th>Room</th>
+                <th>Credit Hours</th>
+                <th>Instructor ID</th>
+                <th>Instructor Name</th>
+                <th>Student ID</th>
+                <th>Enrollment Cap</th>
+            </tr>
+            <?php
+            $sql = "SELECT courses.id, courses.semester, courses.prefix, courses.number, courses.section, courses.name, courses.room, courses.days, courses.times, courses.hours, courses.instructorID, instructor.firstName, instructor.lastName, registration.studentID, courses.enrollmentCap
+            FROM registration
+            INNER JOIN courses ON registration.courseID=courses.id
+            INNER JOIN instructor ON courses.instructorID=instructor.id";
+            $result = $pdo->query($sql);
+            while ($row = $result->fetch()) {
+                echo 
+                "<tr class='student' value={$row['id']}>
+                    <td>{$row['prefix']}</td>
+                    <td>{$row['number']}</td>
+                    <td>{$row['section']}</td>
+                    <td>{$row['name']}</td>
+                    <td>{$row['days']}</td>
+                    <td>{$row['times']}</td>
+                    <td>{$row['room']}</td>
+                    <td>{$row['hours']}</td>
+                    <td>{$row['instructorID']}</td>
+                    <td>{$row['firstName']} {$row['lastName']}</td>
+                    <td>{$row['studentID']}</td>
+                    <td>{$row['enrollmentCap']}</td>
+                </tr>";
+            }
+            ?>
             </table>
         </div>
         <div>
         <table class="instructor" id="instructorTable">
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Course Prefix</th>
+                <th>Course Number</th>
+                <th>Course Section</th>
+                <th>Course Name</th>
+                <th>Days</th>
+                <th>Time</th>
+                <th>Room</th>
+                <th>Credit Hours</th>
+                <th>Instructor ID</th>
+                <th>Instructor Name</th>
+                <th>Enrollment Cap</th>
             </tr>
             <?php
-            $sql = "SELECT * FROM instructor";
+            $sql = "SELECT courses.id, courses.semester, courses.prefix, courses.number, courses.section, courses.name, courses.name, courses.room, courses.days, courses.times, courses.hours, courses.instructorID, instructor.firstName, instructor.lastName, courses.enrollmentCap
+            FROM courses
+            INNER JOIN instructor ON courses.instructorID=instructor.id";
             $result = $pdo->query($sql);
             while ($row = $result->fetch()) {
                 echo 
                 "<tr class='instructor' value={$row['id']}>
-                    <td>{$row['firstName']}</td>
-                    <td>{$row['lastName']}</td>
+                    <td>{$row['prefix']}</td>
+                    <td>{$row['number']}</td>
+                    <td>{$row['section']}</td>
+                    <td>{$row['name']}</td>
+                    <td>{$row['days']}</td>
+                    <td>{$row['times']}</td>
+                    <td>{$row['room']}</td>
+                    <td>{$row['hours']}</td>
+                    <td>{$row['instructorID']}</td>
+                    <td>{$row['firstName']} {$row['lastName']}</td>
+                    <td>{$row['enrollmentCap']}</td>
                 </tr>";
             }
 

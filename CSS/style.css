@@ -31,6 +31,7 @@ header button {
 main {
     padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -95,4 +96,18 @@ form button:hover{
 
 div[hidden] {
     display: none !important;
+}
+
+table{
+    border-collapse: collapse;
+}
+table th, td{
+    text-align: right;
+    border: 1px solid black;
+}
+
+
+#studentTable tr,
+#instructorTable tr {
+    display: none;
 }
