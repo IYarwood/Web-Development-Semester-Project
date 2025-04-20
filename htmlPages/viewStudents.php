@@ -65,10 +65,9 @@
                 <label for="semester" class="semester">Semester</label>
                 <select name="semester" id="semester" class="semester">
                     <option selected>Select Semester</option>
-                    <option>Spring</option>
-                    <option>Summer</option>
-                    <option>Fall</option>
-                    <option>Winter</option>
+                    <option value="spring">Spring</option>
+                    <option value="summer">Summer</option>
+                    <option value="fall">Fall</option>
                 </select>
             </div>
             </form>  
@@ -105,41 +104,34 @@
             ?>
             </table>
         </div>
-        <!--
+        
         <div>
-        <table class="instructor" id="instructorTable">
+        <table class="studentBySemester" id="studentBySemester">
             <tr>
+                <th>Student Name</th>
+                <th>Student Year</th>
+                <th>Student Major</th>
+                <th>Student Email</th>
                 <th>Course Prefix</th>
                 <th>Course Number</th>
                 <th>Course Section</th>
-                <th>Course Name</th>
-                <th>Days</th>
-                <th>Time</th>
-                <th>Room</th>
-                <th>Credit Hours</th>
-                <th>Instructor ID</th>
-                <th>Instructor Name</th>
-                <th>Enrollment Cap</th>
             </tr>
             <?php
-            $sql = "SELECT courses.id, courses.semester, courses.prefix, courses.number, courses.section, courses.name, courses.name, courses.room, courses.days, courses.times, courses.hours, courses.instructorID, instructor.firstName, instructor.lastName, courses.enrollmentCap
-            FROM courses
-            INNER JOIN instructor ON courses.instructorID=instructor.id";
+            $sql = "SELECT courses.semester, student.firstName, student.lastName, student.year, student.major, student.email, courses.prefix, courses.number, courses.section
+            FROM registration
+            INNER JOIN student ON registration.studentID=student.id
+            INNER JOIN courses ON registration.courseID=courses.id";
             $result = $pdo->query($sql);
             while ($row = $result->fetch()) {
                 echo 
-                "<tr class='instructor' value={$row['id']}>
+                "<tr data-coursesemester={$row['semester']}>
+                    <td>{$row['firstName']} {$row['lastName']}</td>
+                    <td>{$row['year']}</td>
+                    <td>{$row['major']}</td>
+                    <td>{$row['email']}</td>
                     <td>{$row['prefix']}</td>
                     <td>{$row['number']}</td>
                     <td>{$row['section']}</td>
-                    <td>{$row['name']}</td>
-                    <td>{$row['days']}</td>
-                    <td>{$row['times']}</td>
-                    <td>{$row['room']}</td>
-                    <td>{$row['hours']}</td>
-                    <td>{$row['instructorID']}</td>
-                    <td>{$row['firstName']} {$row['lastName']}</td>
-                    <td>{$row['enrollmentCap']}</td>
                 </tr>";
             }
 
@@ -147,7 +139,7 @@
             ?>
         </table>
         </div>
-        -->
+        
         
     </main>  
     <footer>
