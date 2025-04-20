@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    //Dataset is set in viewStudents.php <tr data-courseid={$row['id']}>, might change this in viewCourse, it is much neater
+    //Dataset is set in viewStudents.php <tr data-courseid={$row['id']}>
     const courseDropdown = document.querySelector("#course");
     courseDropdown.addEventListener("change", function(){
         const courseID = this.value;
