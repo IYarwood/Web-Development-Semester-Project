@@ -108,6 +108,7 @@ table th, td{
 
 
 #studentTable tr,
+#studentByCourse tr,
 #instructorTable tr {
     display: none;
 }

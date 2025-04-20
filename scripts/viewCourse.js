@@ -70,11 +70,12 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         else{
-            //Fail safe to hid tables if neither of the above get selected somehow
-            for (let i = 0; i<instructorTableRows.length; i++){
+            instructorTableRows[0].style.display="none";
+            studentTableRows[0].style.display="none";
+            for (let i = 1; i<instructorTableRows.length; i++){
                 instructorTableRows[i].style.display="none";  
             }
-            for (let i = 0; i<studentTableRows.length; i++){
+            for (let i = 1; i<studentTableRows.length; i++){
                 studentTableRows[i].style.display="none";  
             }
         }

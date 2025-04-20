@@ -21,6 +21,7 @@
             <li><a href="registerCourse.php">Register Course</a></li>
             <li><a href="dropCourse.php">Drop Course</a></li>
             <li><a href="viewCourse.php">View Course</a></li>
+            <li><a href="viewStudents.php">View Student</a></li>
             <li><a href="userManual.html">User Manual</a></li>
             <li><a href="programmerManual.html">Programmer Manual</a></li>
         </ul>
