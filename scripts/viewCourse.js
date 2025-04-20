@@ -43,8 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
             instructorTableRows[0].style.display="table-row";
             //Start at 1 to avoid hiding headers
             for (let i = 1; i<instructorTableRows.length; i++){
-                //If cell[8] aka instructor ID is same as selected id
-                if (instructorTableRows[i].cells[8].textContent == person){
+                if (instructorTableRows[i].dataset.instructorid == person){
                     instructorTableRows[i].style.display="table-row";
                 }
                 else{
@@ -60,8 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
             studentTableRows[0].style.display="table-row";
             //Start at 1 to avoid hiding headers
             for (let i = 1; i<studentTableRows.length; i++){
-                //cell[10] = studentID
-                if (studentTableRows[i].cells[10].textContent == person){
+                if (studentTableRows[i].dataset.studentid == person){
                     studentTableRows[i].style.display="table-row";
                 }
                 else{

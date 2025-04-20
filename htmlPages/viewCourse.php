@@ -80,9 +80,7 @@
                 <th>Time</th>
                 <th>Room</th>
                 <th>Credit Hours</th>
-                <th>Instructor ID</th>
                 <th>Instructor Name</th>
-                <th>Student ID</th>
                 <th>Enrollment Cap</th>
             </tr>
             <?php
@@ -93,7 +91,7 @@
             $result = $pdo->query($sql);
             while ($row = $result->fetch()) {
                 echo 
-                "<tr class='student' value={$row['id']}>
+                "<tr class='student' data-studentid={$row['studentID']}>
                     <td>{$row['prefix']}</td>
                     <td>{$row['number']}</td>
                     <td>{$row['section']}</td>
@@ -102,9 +100,7 @@
                     <td>{$row['times']}</td>
                     <td>{$row['room']}</td>
                     <td>{$row['hours']}</td>
-                    <td>{$row['instructorID']}</td>
                     <td>{$row['firstName']} {$row['lastName']}</td>
-                    <td>{$row['studentID']}</td>
                     <td>{$row['enrollmentCap']}</td>
                 </tr>";
             }
@@ -122,8 +118,6 @@
                 <th>Time</th>
                 <th>Room</th>
                 <th>Credit Hours</th>
-                <th>Instructor ID</th>
-                <th>Instructor Name</th>
                 <th>Enrollment Cap</th>
             </tr>
             <?php
@@ -133,7 +127,7 @@
             $result = $pdo->query($sql);
             while ($row = $result->fetch()) {
                 echo 
-                "<tr class='instructor' value={$row['id']}>
+                "<tr class='instructor' data-instructorid={$row['instructorID']}>
                     <td>{$row['prefix']}</td>
                     <td>{$row['number']}</td>
                     <td>{$row['section']}</td>
@@ -142,8 +136,6 @@
                     <td>{$row['times']}</td>
                     <td>{$row['room']}</td>
                     <td>{$row['hours']}</td>
-                    <td>{$row['instructorID']}</td>
-                    <td>{$row['firstName']} {$row['lastName']}</td>
                     <td>{$row['enrollmentCap']}</td>
                 </tr>";
             }
