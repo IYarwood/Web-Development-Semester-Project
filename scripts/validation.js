@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("form").addEventListener("submit", function(e) {
-        validate_form(e);
+        const ignoreValidation = ["registerCourse.php", "dropCourse.php"];
+        if (!(location.href.split("/").slice(-1) in ignoreValidation)) {
+            validate_form(e);
+        }
     });
 });
 

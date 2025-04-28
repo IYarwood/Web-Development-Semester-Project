@@ -6,7 +6,7 @@
     <title>Drop Course</title>
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/style.css">
-    <script type="module" src="../scripts/dropCourseValidation.js"></script> 
+    <script type="module" src="../scripts/validation.js"></script> 
 </head>
 <body>
     <header>Drop Course</header>

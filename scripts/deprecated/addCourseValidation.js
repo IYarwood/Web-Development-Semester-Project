@@ -1,4 +1,4 @@
-import { triggerPopUp } from './submitPopUp.js';
+import { triggerPopUp } from '../submitPopUp.js';
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();

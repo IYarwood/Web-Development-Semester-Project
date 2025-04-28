@@ -1,4 +1,4 @@
-import { triggerPopUp } from './submitPopUp.js';
+import { triggerPopUp } from '../submitPopUp.js';
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Please enter a string for Last Name");
             error=true;
         }
-        
+
         let yearSyntax = /^\d{4}$/;
         valid = yearSyntax.test(year);
         if (year == ""){
@@ -84,5 +84,6 @@ document.addEventListener("DOMContentLoaded", function() {
             triggerPopUp(formElement);
             formElement.submit()
         }
+
     });
 });
