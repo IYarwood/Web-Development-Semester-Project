@@ -32,18 +32,25 @@ function validate_form(submitEvent) {
 
     formObject = submitEvent.srcElement;
     allFormInputs = formObject.querySelectorAll(".form-group > *:not(:first-child)");
+    allValid = true;
 
     for (let i=0; i < allFormInputs.length; i++) {
         try {
             inputElement = allFormInputs[i];
             isValid = inputObject[inputElement.id](inputElement.value.trim());
+            if (!isValid) {
+                allValid = false;
+            }
         }
         catch {
+            allValid = false;
             console.log("validation error on", allFormInputs[i]);
+            alert("validation error " + allFormInputs[i]);
         }
     }
-    formObject.submit();
-    
+    if (allValid) {
+        formObject.submit();
+    }
 }
 
 
