@@ -1,7 +1,7 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"]==="POST") 
         try {
-            $connString = "mysql:host=localhost;dbname=registrationSystem";
+            $connString = "mysql:host=localhost;dbname=registrationSystem;charset=gbk";
             $user = "root";
             $pass = "";
             $pdo = new PDO($connString, $user, $pass);
@@ -10,8 +10,10 @@
             $student = $_POST['student'];
             $course = $_POST['course'];
 
-            $sql = "SELECT * FROM registration WHERE studentID=$student AND courseID=$course";
-            $result = $pdo->query($sql); 
+            //$sql = "SELECT * FROM registration WHERE studentID=$student AND courseID=$course";
+            //$result = $pdo->query($sql); 
+            $result = $pdo->prepare("SELECT * FROM registration WHERE studentID=? AND courseID=?");
+            $result->execute([$student, $course]);
             $count = 0;
             while ($row = $result->fetch()) {
                 $count += 1;

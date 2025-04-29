@@ -42,7 +42,7 @@
                         <option value="">Select Person</option>
                         <?php
                             try{
-                                $connString = "mysql:host=localhost;dbname=registrationSystem";
+                                $connString = "mysql:host=localhost;dbname=registrationSystem;charset=gbk";
                                 $user = "root";
                                 $pass = "";
                                 $pdo = new PDO($connString, $user, $pass);

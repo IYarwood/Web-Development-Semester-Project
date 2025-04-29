@@ -1,7 +1,7 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"]==="POST") 
         try {
-            $connString = "mysql:host=localhost;dbname=registrationSystem";
+            $connString = "mysql:host=localhost;dbname=registrationSystem;charset=gbk";
             $user = "root";
             $pass = "";
             $pdo = new PDO($connString, $user, $pass);
@@ -20,8 +20,10 @@
             $instructor = $_POST['instructor'];
             $cap = $_POST['enrollmentCap'];
 
-            $sql = "SELECT * FROM courses WHERE (days='$days' AND times='$times' AND room='$room') OR (days='$days' AND times='$times' AND instructorID='$instructor')";
-            $result = $pdo->query($sql); 
+            //$sql = "SELECT * FROM courses WHERE (days='$days' AND times='$times' AND room='$room') OR (days='$days' AND times='$times' AND instructorID='$instructor')";
+            //$result = $pdo->query($sql);
+            $result = $pdo->prepare("SELECT * FROM courses WHERE (days=? AND times=? AND room=?) OR (days=? AND times=? AND instructorID=?)");
+            $result->execute([$days, $times, $room, $days, $times, $instructor]);  
             $count = 0;
             while ($row = $result->fetch()) {
                 $count += 1;

@@ -1,7 +1,7 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"]==="POST") 
         try {
-            $connString = "mysql:host=localhost;dbname=registrationSystem";
+            $connString = "mysql:host=localhost;dbname=registrationSystem;charset=gbk";
             $user = "root";
             $pass = "";
             $pdo = new PDO($connString, $user, $pass);
