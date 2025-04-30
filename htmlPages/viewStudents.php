@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Course</title>
+    <title>View Students</title>
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <script type="module" src="../scripts/viewStudents.js"></script>
 </head>
-<header>View Courses</header>
+<header>View Students</header>
 <nav>
     <ul>
         <li><a href="main.html">Home</a></li>
