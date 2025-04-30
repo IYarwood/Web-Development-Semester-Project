@@ -9,7 +9,7 @@
 
             $firstName = $_POST["firstName"];
             $lastName = $_POST['lastName'];
-            $year = $_POST['year'];
+            $year = $_POST['classYear'];
             $major = $_POST['major'];
             $email = $_POST['email'];
             $sql = "INSERT INTO student (firstName, lastName, year, major, email) VALUES (?, ?, ?, ?, ?)";

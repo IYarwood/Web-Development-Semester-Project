@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("form").addEventListener("submit", function(e) {
         const ignoreValidation = ["registerCourse.php", "dropCourse.php"];
-        if (!(location.href.split("/").slice(-1) in ignoreValidation)) {
+        console.log(location.href.split("/").slice(-1)[0]);
+        console.log(!(ignoreValidation.includes(location.href.split("/").slice(-1)[0])));
+        if (!(ignoreValidation.includes(location.href.split("/").slice(-1)[0]))) {
             validate_form(e);
         }
     });
@@ -10,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function validate_form(submitEvent) {
     submitEvent.preventDefault();
+    console.log(submitEvent);
 
     const inputObject = {
         "semester": validate_none,
@@ -27,17 +30,22 @@ function validate_form(submitEvent) {
         "instructor": validate_none,
         "enrollmentCap": validate_enrollment_cap,
         "firstName": validate_firstname,
-        "lastName": validate_lastname
+        "lastName": validate_lastname,
+        "rank": validate_none,
+        "department": validate_department,
+        "email": validate_email,
+        "classYear": validate_none,
+        "major": validate_major,
     };
 
-    formObject = submitEvent.srcElement;
-    allFormInputs = formObject.querySelectorAll(".form-group > *:not(:first-child)");
-    allValid = true;
+    var formObject = submitEvent.srcElement;
+    var allFormInputs = formObject.querySelectorAll(".form-group > *:not(:first-child)");
+    var allValid = true;
 
     for (let i=0; i < allFormInputs.length; i++) {
         try {
-            inputElement = allFormInputs[i];
-            isValid = inputObject[inputElement.id](inputElement.value.trim());
+            var inputElement = allFormInputs[i];
+            var isValid = inputObject[inputElement.id](inputElement.value.trim());
             if (!isValid) {
                 allValid = false;
             }
@@ -75,7 +83,7 @@ function validate_firstname(firstName) {
 
 function validate_lastname(lastName) {
     let lastNameSyntax = /^[\s\S]+$/;
-    valid = lastNameSyntax.test(lastName);
+    var valid = lastNameSyntax.test(lastName);
     if (lastName == ""){
         alert("Last Name is required");
         return false;
@@ -89,7 +97,7 @@ function validate_lastname(lastName) {
 
 function validate_department(department) {
     let departmentSyntax = /^[\s\S]*$/;
-    valid = departmentSyntax.test(department);
+    var valid = departmentSyntax.test(department);
     if (valid != true){
         alert("Please enter a string for Department");
         return false;
@@ -117,7 +125,7 @@ function validate_year(year) {
 
 function validate_course_prefix(coursePrefix) {
     let prefixSyntax = /^[A-Z]{3,4}$/;
-    valid = prefixSyntax.test(coursePrefix);
+    var valid = prefixSyntax.test(coursePrefix);
     if (coursePrefix == ""){
         alert("Course Prefix is required");
         return false;
@@ -131,7 +139,7 @@ function validate_course_prefix(coursePrefix) {
 
 function validate_course_number(courseNumber) {
     let numberSyntax = /^\d{3}$/;
-    valid = numberSyntax.test(courseNumber);
+    var valid = numberSyntax.test(courseNumber);
     if (courseNumber == ""){
         alert("Course Number is required");
         return false;
@@ -148,7 +156,7 @@ function validate_course_number(courseNumber) {
 
 function validate_course_section(courseSection) {
     let sectionSyntax = /^\d{2}$/;
-    valid = sectionSyntax.test(courseSection);
+    var valid = sectionSyntax.test(courseSection);
     if (courseSection == ""){
         alert("Course Section is required");
         return false;
@@ -162,7 +170,7 @@ function validate_course_section(courseSection) {
 
 function validate_room_number(room) {
     let roomNumberSyntax = /^([A-Za-z ]+?)\s(\d{2,3}[A-Za-z]?)$/;
-    valid = roomNumberSyntax.test(room);
+    var valid = roomNumberSyntax.test(room);
     if (valid != true){
         alert("Please enter a string and 2 or 3 digits for Room (Shelby 23b)");
         return false;
@@ -173,7 +181,7 @@ function validate_room_number(room) {
 
 function validate_credit_hours(creditHours) {
     let creditHoursSyntax = /^\d{1}$/;
-    valid = creditHoursSyntax.test(creditHours);
+    var valid = creditHoursSyntax.test(creditHours);
     if (creditHours == ""){
         alert("Credit Hours is required");
         return false;
@@ -187,7 +195,7 @@ function validate_credit_hours(creditHours) {
 
 function validate_enrollment_cap(enrollmentCap) {
     let enrollmentCapSyntax = /^\d{2}$/;
-    valid = enrollmentCapSyntax.test(enrollmentCap);
+    var valid = enrollmentCapSyntax.test(enrollmentCap);
     if (enrollmentCap == ""){
         alert("Enrollment Cap is required");
         return false;
@@ -202,12 +210,27 @@ function validate_enrollment_cap(enrollmentCap) {
 
 function validate_email(email) {
     let emailSyntax = /^[a-z]{3}\d{3}@marietta\.edu$/;
-    valid = emailSyntax.test(email);
+    var valid = emailSyntax.test(email);
     if (email == ""){
         alert("Email is required");
         return false;
     }else if (valid != true){
         alert("Please enter a valid marietta email (abc123@marietta.edu)");
+        return false;
+    }
+    return true;
+}
+
+
+function validate_major(major) {
+    let majorSyntax = /^[\s\S]*$/;
+    var valid = majorSyntax.test(major);
+    if (major == "") {
+        alert("Major is required");
+        return false;
+    }
+    if (valid != true){
+        alert("Please enter a string for Major");
         return false;
     }
     return true;
