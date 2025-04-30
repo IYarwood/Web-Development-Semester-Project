@@ -96,8 +96,8 @@
                     <td>{$row['number']}</td>
                     <td>{$row['section']}</td>
                     <td>{$row['name']}</td>
-                    <td>{$row['days']}</td>
-                    <td>{$row['times']}</td>
+                    <td style=''>{$row['days']}</td>
+                    <td style='width:20%'>{$row['times']}</td>
                     <td>{$row['room']}</td>
                     <td>{$row['hours']}</td>
                     <td>{$row['firstName']} {$row['lastName']}</td>
@@ -132,8 +132,8 @@
                     <td>{$row['number']}</td>
                     <td>{$row['section']}</td>
                     <td>{$row['name']}</td>
-                    <td>{$row['days']}</td>
-                    <td>{$row['times']}</td>
+                    <td style=''>{$row['days']}</td>
+                    <td style='width:20%'>{$row['times']}</td>
                     <td>{$row['room']}</td>
                     <td>{$row['hours']}</td>
                     <td>{$row['enrollmentCap']}</td>

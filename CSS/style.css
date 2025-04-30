@@ -113,3 +113,8 @@ table th, td{
 #instructorTable tr {
     display: none;
 }
+
+
+.daysRow, .timesRow {
+    width: 150%;
+}
