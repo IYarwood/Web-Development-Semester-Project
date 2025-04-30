@@ -30,6 +30,44 @@
             }
             
             if ($count < 1){
+                // Proposed DB insertion change
+                /*
+                $times_value = [
+                    "mwf8" => "8:00 AM - 8:50 AM" ,
+                    "mwf9" => "9:00 AM - 9:50 AM",
+                    "mwf10" => "10:00 AM - 10:50 AM",
+                    "mwf11" => "11:00 AM - 11:50 AM",
+                    "mwf12" => "12:00 PM - 12:50 PM",
+                    "mwf1" => "1:00 PM - 1:50 PM",
+                    "mwf2" => "2:00 PM - 2:50 PM",
+                    "mwf3" => "3:00 PM - 3:50 PM",
+                    "mw9" => "9:00 AM - 10:50 AM",
+                    "mw1" => "1:00 PM - 2:15 PM",
+                    "mw12" => "1:00 PM - 2:50 PM",
+                    "mw2" => "2:00 PM - 3:15 PM",
+                    "tth8" => "8:00 AM - 9:15 AM",
+                    "tth9" => "9:30 AM - 10:45 AM",
+                    "tth11" => "11:00 AM - 12:15 PM",
+                    "tth1" => "1:00 PM - 2:15 PM",
+                    "tth2" => "2:30 PM - 3:45 PM",
+                    "single1" => "1:00 PM - 4:00 PM",
+                    "single2" => "2:00 PM - 5:00 PM",
+                    "single3" => "7:00 PM - 9:30 PM"
+                ];
+
+                $days_value = [
+                    "mwf" => "Monday, Wednesday, Friday",
+                    "mw" => "Monday, Wednesday",
+                    "tth" => "Tuesday, Thursday",
+                    "m" => "Monday",
+                    "t" => "Tuesday",
+                    "th" => "Thursday"
+                ];
+
+                $times = $times_value[$times];
+                $days = $days_value[$days];
+                */
+
                 $sql = "INSERT INTO courses (semester, year, prefix, number, section, name, room, days, times, hours, instructorID, enrollmentCap) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     
                 $stmt = $pdo->prepare($sql);
