@@ -29,8 +29,9 @@
     <h1>Programmer Manual</h1>
         <p>On this page, you can find the <a href="#overview">technical overview of the website</a>, 
             <a href="#page-summary">summary of pages on this website</a>, 
-            <a href="#page-desc">technical description of form elements</a>, and the 
-            <a href="#function-desc">decription of functions</a> used on the back-end.
+            <a href="#page-desc">technical description of form elements</a>, the 
+            <a href="#function-desc">decription of functions</a> used on the back-end, and the 
+            <a href="#php">Technical Overview of PHP Backend</a> used for database.
         </p>
     <h2 id="overview">Overview</h2>
         <p>This website allows students to <a href="registerCourse.html">register for courses</a> through a simple web form. 
@@ -332,6 +333,7 @@
                     <dd>Two-digit numbers only</dd>
                     <dd>Examples include "01", "02", "03", etc.</dd>
             </dl>
+
         <h3 id="pd-drop-course">Drop Course</h3>
             <p>At the top of this webpage you will first see the page title/header, followed by our navigation
                 bar underneath of it. You can click on the text in the navigation bar to jump to different pages on 
@@ -382,79 +384,150 @@
                     <dd>Two-digit numbers only</dd>
                     <dd>Exmaples include "01", "02", "03", etc.</dd>
             </dl>
-    <h2 id="function-desc">Function Descriptions</h2>
-        <p>Click to jump to javascript file: <a href="#submit-popup">submitPopUp.js</a> <a href="#addCourseValidation">addCourseValidation.js</a>
-            <a href="#addInstructorValidation">addInstructorValidation.js</a> <a href="#dropCourseValidation">dropCourseValidation.js</a>
-            <a href="#enrollStudentValidation">enrollStudentValidation.js</a> <a href="#registerCourseValidation">registerCourseValidation.js</a>
-        </p>
+            <h2 id="function-desc">Function Descriptions</h2>
+
+            <p>This project now uses a centralized JavaScript file <code>validation.js</code> that handles form validation for all pages.</p>
+            
+            <h3 id="validation-js">validation.js</h3>
+            <dl>
+                <dt><strong>Event Listener</strong></dt>
+                <dd>On DOM content load, it attaches a submit listener to the form with ID <code>form</code>. If the page is not in the ignore list (currently <code>registerCourse.php</code> or <code>dropCourse.php</code>), it calls <code>validate_form()</code>.</dd>
+            
+                <dt><strong>validate_form(submitEvent)</strong></dt>
+                <dd>Prevents form submission, collects all inputs under the <code>.form-group</code> class, and runs a matching validator from the <code>inputObject</code> map.</dd>
+            
+                <dt><strong>inputObject</strong></dt>
+                <dd>A JavaScript object mapping input IDs (like <code>coursePrefix</code>, <code>year</code>, etc.) to validation functions. Only inputs with matching IDs are validated. Others are ignored.</dd>
+            
+                <dt><strong>Validation Functions</strong></dt>
+                <dd>Each input field has a corresponding validation function, such as:
+                    <ul>
+                        <li><code>validate_firstname()</code> – Checks non-empty string</li>
+                        <li><code>validate_year()</code> – Validates 4-digit year, must be 2025 or later</li>
+                        <li><code>validate_course_prefix()</code> – Must be 3–4 uppercase letters</li>
+                        <li><code>validate_room_number()</code> – Ensures format like "Selby 240"</li>
+                        <li><code>validate_email()</code> – Validates format <code>abc123@marietta.edu</code></li>
+                    </ul>
+                </dd>
+            
+                <dt><strong>Fallback & Errors</strong></dt>
+                <dd>If validation fails, an <code>alert()</code> is shown and submission is blocked. If any field doesn’t match the validation map or throws an error, it is caught and logged.</dd>
+            
+                <dt><strong>validate_none()</strong></dt>
+                <dd>A dummy function used for fields that don’t need validation.</dd>
+            </dl>
+            
+            <h3 id="submit-popup">submitPopUp.js</h3>
+            <dl>
+                <dt><strong>get_form_data(form_container, days, time)</strong></dt>
+                <dd>Parses the form by pairing labels and input/select values into a key-value map. For day/time fields, it uses a readable format (e.g., “Monday, Wednesday”).</dd>
+            
+                <dt><strong>format_alert_output(form_data)</strong></dt>
+                <dd>Takes the map returned by <code>get_form_data()</code> and turns it into a multi-line alert message for confirmation before submission.</dd>
+            
+                <dt><strong>triggerPopUp(formElement, days, time)</strong></dt>
+                <dd>Main exported function. It gets form data and shows a formatted <code>alert()</code> to the user with submitted information.</dd>
+            </dl>
+            
+            <h3 id="daysTimeDropdown">daysTimeDropdown.js</h3>
+            <dl>
+                <dt><strong>Purpose:</strong></dt>
+                <dd>Dynamically shows time options in the dropdown based on the selected "Days Offered" value (MWF, MW, TTh, etc.).</dd>
+            
+                <dt><strong>showRelevantTimeDropdown()</strong></dt>
+                <dd>Hides all time dropdowns initially, then reveals the appropriate group of times depending on the selected option.</dd>
+            
+                <dt><strong>Event Handling:</strong></dt>
+                <dd>Runs on page load and when the user changes the selected day pattern.</dd>
+            </dl>
+            
+            <h3 id="viewCourse">viewCourse.js</h3>
+            <dl>
+                <dt><strong>Purpose:</strong></dt>
+                <dd>Allows filtering course registrations based on student or instructor selection.</dd>
+            
+                <dt><strong>Key Behaviors:</strong></dt>
+                <dd>
+                    <ul>
+                        <li>Dropdown 1 filters options in Dropdown 2 (e.g., only students or only instructors)</li>
+                        <li>Dropdown 2 filters the table view to show courses linked to the selected person</li>
+                        <li>Hides unused rows dynamically using <code>style.display = "none"</code></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <h3 id="viewStudents">viewStudents.js</h3>
+            <dl>
+                <dt><strong>Purpose:</strong></dt>
+                <dd>Displays a table of students based on the selected course or semester filter.</dd>
+            
+                <dt><strong>Course Filter:</strong></dt>
+                <dd>When the user selects a course, shows students enrolled in that course using the <code>data-courseid</code> attribute.</dd>
+            
+                <dt><strong>Semester Filter:</strong></dt>
+                <dd>When the user selects a semester, shows students enrolled in that semester using <code>data-coursesemester</code>.</dd>
+            
+                <dt><strong>UI Interaction:</strong></dt>
+                <dd>Hides/show rows dynamically for better user experience when switching between filters.</dd>
+            </dl>
+
+        <section>
+            <h2 id="php">Technical Overview of PHP Backend (Database Interaction)</h2>
         
-        <h3 id="submit-popup">submitPopUp.js</h3>
-        <dl>
-            <dt>on_load (deprecated)</dt>
-                <dd>Upon DOM content loading, get the whole form element and create an event listener for the form's submit button.</dd>
-            <dt>on_submit (deprecated)</dt>
-                <dd>Called by upon_load's event listener, on submit button press get form data using get_form_data and create the
-                    alert pop-up (using a string created by format_alert_output).
-                </dd>
-            <dt>get_form_data</dt>
-                <dd>Called by triggerPopUp, search the form for label-input field pairs in each form-group in the form-container
-                    and map them to key/value pairs where the key is label's textContent attribute and the value is the input field's
-                    value attribute.
-                </dd>
-            <dt>format_alert_output</dt>
-                <dd>Called by triggerPopUp, take the form information map created by get_form_data and use it to generate a string
-                    for the alert box. This string reads as a multi-line text box with each line as one key/value (field/value) pair
-                    and a title on the first line.
-                </dd>
-            <dt>triggerPopUp</dt>
-                <dd>Called in addCourseValidation.js in order to trigger get_form_data only after all checks are done without error.
-                </dd>
-        </dl>
-
-        <h3 id="addCourseValidation">addCourseValidation.js</h3>
-        <dl>
-            <dt>Anonymous Function</dt>
-                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
-                    expression checks based on patterns to match the descriptions listed above. Show alert box and cancel submit
-                    if the input does not match the given regular expression.
-                </dd>
-        </dl>
-
-        <h3 id="addInstructorValidation">addInstructorValidation.js</h3>
-        <dl>
-            <dt>Anonymous Function</dt>
-                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
-                    expression checks based on patterns to match the descriptions listed above. Show alert box and cancel submit
-                    if the input does not match the given regular expression.
-                </dd>
-        </dl>
-
-        <h3 id="dropCourseValidation">dropCourseValidation.js</h3>
-        <dl>
-            <dt>Anonymous Function</dt>
-                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
-                    expression checks based on patterns to match the descriptions listed above. Show alert box and cancel submit
-                    if the input does not match the given regular expression.
-                </dd>
-        </dl>
-
-        <h3 id="enrollStudentValidation">enrollStudentValidation.js</h3>
-        <dl>
-            <dt>Anonymous Function</dt>
-                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
-                    expression checks based on patterns to match the descriptions listed above. Show alert box and cancel submit
-                    if the input does not match the given regular expression.
-                </dd>
-        </dl>
-
-        <h3 id="registerCourseValidation">registerCourseValidation.js</h3>
-        <dl>
-            <dt>Anonymous Function</dt>
-                <dd>Upon submit event gather and trim all values in the given html form. With these values perform regular 
-                    expression checks based on patterns to match the descriptions listed above. Show alert box and cancel submit
-                    if the input does not match the given regular expression.
-                </dd>
-        </dl>
+            <article id="studentEnroll">
+                <h3>1. studentEnroll.php</h3>
+                <p><strong>Purpose:</strong> Displays a form to enroll a new student. Collects student details and inserts them into the <code>Students</code> table in the database.</p>
+                <p><strong>Process:</strong> HTML form submission using POST method to PHP backend. Captured fields are validated and inserted using SQL INSERT statements.</p>
+                <p><strong>SQL Operations:</strong> <code>INSERT INTO Students (firstName, lastName, year, major, email, status)</code></p>
+            </article>
+        
+            <article id="addInstructor">
+                <h3>2. addInstructor.php</h3>
+                <p><strong>Purpose:</strong> Displays a form to add a new instructor. Collects instructor details and inserts into the <code>Instructors</code> table.</p>
+                <p><strong>Process:</strong> Form collects first name, last name, department, rank, and email. Uses POST to send data to a PHP script that executes an INSERT query.</p>
+                <p><strong>SQL Operations:</strong> <code>INSERT INTO Instructors (firstName, lastName, department, rank, email)</code></p>
+            </article>
+        
+            <article id="addCourseSubmit">
+                <h3>3. addCourseSubmit.php</h3>
+                <p><strong>Purpose:</strong> Processes the course addition form and saves the course to the database.</p>
+                <p><strong>Captured Fields:</strong> Semester, Year, Course Prefix, Number, Section, Name, Days, Time, Room, Credit Hours, Enrollment Cap, Instructor ID.</p>
+                <p><strong>Process:</strong> The PHP script captures form data using POST and executes a parameterized SQL INSERT query.</p>
+                <p><strong>SQL Operations:</strong> <code>INSERT INTO Courses (semester, year, prefix, number, section, name, days, time, room, hours, cap, instructorID)</code></p>
+            </article>
+        
+            <article id="registerCourseSubmit">
+                <h3>4. registerCourseSubmit.php</h3>
+                <p><strong>Purpose:</strong> Registers a student for a course by inserting a new registration record.</p>
+                <p><strong>Process:</strong> 
+                    - Captures student ID and course ID from form<br>
+                    - Performs SELECT to check if registration exists<br>
+                    - If not found, INSERT is executed to register the student</p>
+                <p><strong>SQL Operations:</strong> 
+                    <code>SELECT * FROM Registration WHERE studentID = ? AND courseID = ?</code><br>
+                    followed by<br>
+                    <code>INSERT INTO Registration (studentID, courseID) VALUES (?, ?)</code>
+                </p>
+            </article>
+        
+            <article id="dropCourseSubmit">
+                <h3>5. dropCourseSubmit.php</h3>
+                <p><strong>Purpose:</strong> Drops a student’s enrollment from a course by deleting the registration record.</p>
+                <p><strong>Process:</strong> Captures student ID and course ID from the form and deletes the corresponding entry from the Registration table.</p>
+                <p><strong>SQL Operations:</strong> <code>DELETE FROM Registration WHERE studentID = ? AND courseID = ?</code></p>
+            </article>
+        </section>
+        
+        <section>
+            <h2>General Notes for Developers</h2>
+            <ul>
+                <li><strong>Database:</strong> MySQL using tables: Students, Instructors, Courses, Registration</li>
+                <li><strong>Form Methods:</strong> POST (secure method)</li>
+                <li><strong>Database Connection:</strong> <code>mysqli_connect('localhost', 'root', '', 'database_name')</code></li>
+                <li><strong>Security:</strong> All SQL queries now use prepared statements with <code>mysqli_prepare()</code> and <code>bind_param()</code>, which protects against SQL injection. Input is also sanitized with <code>htmlspecialchars()</code> to guard against cross-site scripting (XSS).</li>
+                <li><strong>PHP Version:</strong> Compatible with PHP 7.x or higher (XAMPP recommended)</li>
+            </ul>
+        </section>        
 
     <footer>
         Web Development Project by Ian Yarwood, Corey Verkouteren, and Aditya Shah
