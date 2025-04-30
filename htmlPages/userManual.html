@@ -33,7 +33,7 @@
     <h2 id="overview">Overview</h2>
         <p>This website allows students to <a href="registerCourse.html">register for courses</a> through a simple web form. 
             It also allows students to <a href="dropCourse.html">drop a course</a> on a separate form. Users can also 
-            <a href="studentEnroll.html">enroll students</a>, <a href="addInstructor.html">add instructors</a>, and 
+            <a href="studentEnroll.html">enroll students</a>, <a href="addInstructor.html">add instructors</a>, <a href="viewCourse.php">View Course</a>, <a href="viewStudents.php">View Students</a>, and 
             <a href="addCourse.html">add courses</a>. In future updates, all of these changes will be saved to a database, allowing 
             for easy updates to the college system. In addition, users will have the option to view who is registered for certain 
             courses. All of these pages and functionalities can be seen listed above in the navigation bar, which will take you 
@@ -53,11 +53,15 @@
                 <dd>Webpage form to register a student to a course</dd>
             <dt>Drop Course</dt>
                 <dd>Webpage form for a student to drop a course</dd>
+            <dt>View Course</dt>
+                <dd>Webpage that displays courses registered by a student or taught by an instructor</dd>
+            <dt>View Students</dt>
+                <dd>Webpage that displays enrolled students, filterable by course and semester</dd>
         </dl>
     <h2 id="page-desc">Page Descriptions</h2>
         <p>Click to jump to a page description: <a href="#pd-home">Home</a> <a href="#pd-student-enrollment">Student Enrollment</a> 
             <a href="#pd-add-instructor">Add Instructor</a> <a href="#pd-add-course">Add Course</a> <a href="#pd-register-course">Register Course</a> 
-            <a href="#pd-drop-course">Drop Course</a>
+            <a href="#pd-drop-course">Drop Course</a> <a href="#pd-view-course">View Course</a> <a href="#pd-view-students">View Students</a>
         </p>
         <h3 id="pd-home">Home</h3>
             <p>At the top of this webpage you will first see the page title/header, followed by our navigation
@@ -338,6 +342,48 @@
                     <dd>Two-digit numbers only</dd>
                     <dd>Exmaples include "01", "02", "03", etc.</dd>
             </dl>
+            <h3 id="pd-view-course">View Course</h3>
+                <p>At the top of this webpage you will first see the page title/header, followed by our navigation
+                    bar underneath of it. You can click on the text in the navigation bar to jump to different pages on 
+                    the website. At the very bottom of the page, you will see our page footer, with our web project title
+                    and contributors. <br>
+                    On the main part of the page (in the middle), you will see two dropdown menus. The form will be structured like this:
+                </p>
+            <dl>
+                <dt>View By</dt>
+                    <dd>This dropdown lets the user choose whether they want to see courses by student or by instructor</dd>
+                    <dd>Required</dd>
+                    <dd>Options include "Student" and "Instructor"</dd>
+                <dt>Name</dt>
+                    <dd>Based on the previous selection, this dropdown lists student or instructor names</dd>
+                    <dd>Required</dd>
+                    <dd>Examples include "John Smith", "Emily Johnson", etc.</dd>
+                <dt>Course Table</dt>
+                    <dd>Once a name is selected, this table displays all related course records for that individual</dd>
+                    <dd>No form submission needed — the table updates instantly</dd>
+                    <dd>Columns typically include course prefix, number, section, semester, and year</dd>
+            </dl>
+
+            <h3 id="pd-view-students">View Students</h3>
+                <p>At the top of this webpage you will first see the page title/header, followed by our navigation
+                    bar underneath of it. You can click on the text in the navigation bar to jump to different pages on 
+                    the website. At the very bottom of the page, you will see our page footer, with our web project title
+                    and contributors. <br>
+                    On the main part of the page (in the middle), you will see a table of enrolled students with two dropdown filters above it. The form will be structured like this:
+                </p>
+                <dl>
+                    <dt>Course</dt>
+                        <dd>This dropdown allows the user to filter the student list based on course</dd>
+                        <dd>Not required</dd>
+                        <dd>Examples include "CSCI 101", "MATH 202", etc.</dd>
+                    <dt>Semester</dt>
+                        <dd>This dropdown allows the user to filter students based on the semester</dd>
+                        <dd>Not required</dd>
+                        <dd>Examples include "Fall 2025", "Spring 2026"</dd>
+                    <dt>Student Table</dt>
+                        <dd>The table updates dynamically based on the filters and displays only the relevant students</dd>
+                        <dd>Columns include student name, major, year, and email</dd>
+                </dl>
     <footer>
         Web Development Project by Ian Yarwood, Corey Verkouteren, and Aditya Shah
     </footer>
