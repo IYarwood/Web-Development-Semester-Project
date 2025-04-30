@@ -36,7 +36,7 @@
     <h2 id="overview">Overview</h2>
         <p>This website allows students to <a href="registerCourse.html">register for courses</a> through a simple web form. 
             It also allows students to <a href="dropCourse.html">drop a course</a> on a separate form. Users can also 
-            <a href="studentEnroll.html">enroll students</a>, <a href="addInstructor.html">add instructors</a>, and 
+            <a href="studentEnroll.html">enroll students</a>, <a href="addInstructor.html">add instructors</a>,<a href="viewCourse.php">View Course</a>, <a href="viewStudents.php">View Students</a>, and 
             <a href="addCourse.html">add courses</a>. In future updates, all of these changes will be saved to a database, allowing 
             for easy updates to the college system. In addition, users will have the option to view who is registered for certain 
             courses. All of these pages and functionalities can be seen listed above in the navigation bar, which will take you 
@@ -59,6 +59,10 @@
                 <dd>Webpage form to register a student to a course</dd>
             <dt>Drop Course</dt>
                 <dd>Webpage form for a student to drop a course</dd>
+            <dt>View Course</dt>
+                <dd>Webpage that displays courses registered by a student or taught by an instructor</dd>
+            <dt>View Students</dt>
+                <dd>Webpage that displays enrolled students, filterable by course and semester</dd>
         </dl>
     <h2 id="page-desc">Page Descriptions</h2>
         <p>Click to jump to a page description: <a href="#pd-home">Home</a> <a href="#pd-student-enrollment">Student Enrollment</a> 
@@ -380,6 +384,32 @@
                     <dd>Two-digit numbers only</dd>
                     <dd>Exmaples include "01", "02", "03", etc.</dd>
             </dl>
+            <h3 id="pd-view-course">View Course</h3>
+                <p>
+                    This page allows users to view course registration details for either students or instructors.
+                    At the top, there is a dropdown to select whether to view by <strong>Student</strong> or <strong>Instructor</strong>.
+                    Based on that selection, a second dropdown will appear with the list of names to choose from.
+                </p>
+                <p>
+                    Once a name is selected, the table below dynamically filters the rows to display only the courses associated with the selected person.
+                    This functionality is powered by the <code>viewCourse.js</code> script, which shows/hides rows based on <code>data-*</code> attributes on the table rows.
+                </p>
+
+            <h3 id="pd-view-students">View Students</h3>
+                <p>
+                    This page displays a table of enrolled students. It provides two filters:
+                    <ul>
+                        <li>A dropdown to filter by <strong>Course</strong></li>
+                        <li>A dropdown to filter by <strong>Semester</strong></li>
+                    </ul>
+                </p>
+                <p>
+                    Selecting a filter dynamically updates the table to show only students matching the selected course or semester.
+                </p>
+                <p>
+                    Each student row is annotated with <code>data-courseid</code> and <code>data-coursesemester</code> attributes,
+                    which are used by <code>viewStudents.js</code> to show/hide rows as the user interacts with the dropdowns.
+                </p>
             <h2 id="function-desc">Function Descriptions</h2>
 
             <p>This project now uses a centralized JavaScript file <code>validation.js</code> that handles form validation for all pages.</p>
