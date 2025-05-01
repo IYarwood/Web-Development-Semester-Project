@@ -22,3 +22,5 @@
             die($e->getMessage());
         }
 ?>
+<br>
+<a href="../htmlPages/dropCourse.php">Back</a>

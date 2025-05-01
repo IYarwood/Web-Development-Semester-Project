@@ -38,3 +38,5 @@
             die($e->getMessage());
         }
 ?>
+<br>
+<a href="../htmlPages/registerCourse.php">Back</a>

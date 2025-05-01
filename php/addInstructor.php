@@ -1,5 +1,5 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"]==="POST") 
+    if ($_SERVER["REQUEST_METHOD"]==="POST"){
         try {
             $connString = "mysql:host=localhost;dbname=registrationSystem;charset=gbk";
             $user = "root";
@@ -25,4 +25,7 @@
         catch (PDOException $e) {
             die($e->getMessage());
         }
+    }
 ?>
+<br>
+<a href="../htmlPages/addInstructor.html">Back</a>

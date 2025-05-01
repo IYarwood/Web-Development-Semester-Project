@@ -87,3 +87,5 @@
         }
     }
 ?>
+<br>
+<a href="../htmlPages/addCourse.php">Back</a>

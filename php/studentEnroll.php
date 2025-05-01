@@ -26,3 +26,5 @@
             die($e->getMessage());
         }
 ?>
+<br>
+<a href="../htmlPages/studentEnroll.html">Back</a>
