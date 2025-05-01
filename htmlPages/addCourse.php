@@ -119,7 +119,7 @@
                     <select name="instructor" id="instructor">
                         <?php
                             try{
-                                $connString = "mysql:host=localhost;dbname=registrationSystem;charset=gbk";
+                                $connString = "mysql:host=localhost;dbname=registrationSystem";
                                 $user = "root";
                                 $pass = "";
                                 $pdo = new PDO($connString, $user, $pass);
