@@ -29,6 +29,6 @@
     }
     echo 
     "<p>{$message}</p> 
-    <a style='padding: 8px 16px; background-color: lightgrey; border-radius: 5px; text-decoration: none; color: black;' href='../htmlPages/registerCourse.php'>Back</a>";
+    <a style='padding: 8px 16px; background-color: lightgrey; border-radius: 5px; text-decoration: none; color: black;' href='../htmlPages/addInstructor.html'>Back</a>";
 
 ?>
