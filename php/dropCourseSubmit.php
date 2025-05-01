@@ -1,5 +1,6 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"]==="POST") 
+    $message = "";
+    if ($_SERVER["REQUEST_METHOD"]==="POST"){ 
         try {
             $connString = "mysql:host=localhost;dbname=registrationSystem";
             $user = "root";
@@ -15,13 +16,16 @@
             //$result = $pdo->query($sql); 
             $result = $pdo->prepare("DELETE FROM registration WHERE studentID=? AND courseID=?");
             $result->execute([$student, $course]);
-            echo "Course Dropped";
-                
+
+            $message = "Course Dropped";
             $pdo = null; 
         }
         catch (PDOException $e) {
             die($e->getMessage());
         }
+    }
+    echo 
+    "<p>{$message}</p> 
+    <a style='padding: 8px 16px; background-color: lightgrey; border-radius: 5px; text-decoration: none; color: black;' href='../htmlPages/registerCourse.php'>Back</a>";
+
 ?>
-<br>
-<a href="../htmlPages/dropCourse.php">Back</a>

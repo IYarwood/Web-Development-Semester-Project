@@ -1,4 +1,5 @@
 <?php
+    $message = "";
     if ($_SERVER["REQUEST_METHOD"]==="POST"){
         try {
             $connString = "mysql:host=localhost;dbname=registrationSystem";
@@ -19,14 +20,15 @@
 
             $stmt->execute([$firstName, $lastName, $department, $rank, $email]);
 
-            echo "Instructor Enrolled";
-            
+            $message = "Instructor Enrolled";
             $pdo = null;
         }
         catch (PDOException $e) {
             die($e->getMessage());
         }
     }
+    echo 
+    "<p>{$message}</p> 
+    <a style='padding: 8px 16px; background-color: lightgrey; border-radius: 5px; text-decoration: none; color: black;' href='../htmlPages/registerCourse.php'>Back</a>";
+
 ?>
-<br>
-<a href="../htmlPages/addInstructor.html">Back</a>

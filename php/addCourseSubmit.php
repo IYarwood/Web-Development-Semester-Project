@@ -1,4 +1,5 @@
 <?php
+    $message = "";
     if ($_SERVER["REQUEST_METHOD"]==="POST"){
         try {
             $connString = "mysql:host=localhost;dbname=registrationSystem";
@@ -75,18 +76,19 @@
     
                 $stmt->execute([$semester, $year, $prefix, $number, $section, $name, $room, utf8_encode($days), utf8_encode($times), $hours, $instructor, $cap]);
     
-                echo "Course Made";
-                
+                $message = "Course Made";
                 $pdo = null; 
             }
             else{
-                echo "Course not made, course already exist at that time in that room or the professor is already busy.";
+                $message = "Course not made, course already exist at that time in that room or the professor is already busy.";
             }
         }
         catch (PDOException $e) {
             die($e->getMessage());
         }
     }
+    echo 
+    "<p>{$message}</p> 
+    <a style='padding: 8px 16px; background-color: lightgrey; border-radius: 5px; text-decoration: none; color: black;' href='../htmlPages/registerCourse.php'>Back</a>";
+
 ?>
-<br>
-<a href="../htmlPages/addCourse.php">Back</a>
