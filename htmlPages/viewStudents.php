@@ -79,12 +79,9 @@
                 <th>Student Year</th>
                 <th>Student Major</th>
                 <th>Student Email</th>
-                <th>Course Prefix</th>
-                <th>Course Number</th>
-                <th>Course Section</th>
             </tr>
             <?php
-            $sql = "SELECT courses.id, student.firstName, student.lastName, student.year, student.major, student.email, courses.prefix, courses.number, courses.section
+            $sql = "SELECT courses.id, student.firstName, student.lastName, student.year, student.major, student.email
             FROM registration
             INNER JOIN student ON registration.studentID=student.id
             INNER JOIN courses ON registration.courseID=courses.id";
@@ -96,9 +93,6 @@
                     <td>{$row['year']}</td>
                     <td>{$row['major']}</td>
                     <td>{$row['email']}</td>
-                    <td>{$row['prefix']}</td>
-                    <td>{$row['number']}</td>
-                    <td>{$row['section']}</td>
                 </tr>";
             }
             ?>
