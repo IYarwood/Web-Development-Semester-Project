@@ -550,7 +550,7 @@
                 <li><strong>Database:</strong> MySQL using tables: Students, Instructors, Courses, Registration</li>
                 <li><strong>Form Methods:</strong> POST (secure method)</li>
                 <li><strong>Database Connection:</strong> <code>mysqli_connect('localhost', 'root', '', 'database_name')</code></li>
-                <li><strong>Security:</strong> All SQL queries now use prepared statements with <code>mysqli_prepare()</code> and <code>bind_param()</code>, which protects against SQL injection. Input is also sanitized with <code>htmlspecialchars()</code> to guard against cross-site scripting (XSS).</li>
+                <li><strong>Security:</strong> All vulnerable SQL queries now use prepared statements with <code>pdo->prepare()</code> and <code>execute()</code>, which protects against SQL injection. Addiitionally, <code>$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false)</code> to prevent emulated prepared statements.</li>
                 <li><strong>PHP Version:</strong> Compatible with PHP 7.x or higher (XAMPP recommended)</li>
             </ul>
         </section>        

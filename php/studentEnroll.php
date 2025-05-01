@@ -1,11 +1,12 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"]==="POST") 
         try {
-            $connString = "mysql:host=localhost;dbname=registrationSystem;charset=gbk";
+            $connString = "mysql:host=localhost;dbname=registrationSystem";
             $user = "root";
             $pass = "";
             $pdo = new PDO($connString, $user, $pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
             $firstName = $_POST["firstName"];
             $lastName = $_POST['lastName'];
