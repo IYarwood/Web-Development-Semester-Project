@@ -35,10 +35,10 @@
             <a href="#database-tables">database tables and queries</a> details database tables and queries used in it.
         </p>
     <h2 id="overview">Overview</h2>
-        <p>This website allows students to <a href="registerCourse.html">register for courses</a> through a simple web form. 
-            It also allows students to <a href="dropCourse.html">drop a course</a> on a separate form. Users can also 
+        <p>This website allows students to <a href="registerCourse.php">register for courses</a> through a simple web form. 
+            It also allows students to <a href="dropCourse.php">drop a course</a> on a separate form. Users can also 
             <a href="studentEnroll.html">enroll students</a>, <a href="addInstructor.html">add instructors</a>,<a href="viewCourse.php">View Course</a>, <a href="viewStudents.php">View Students</a>, and 
-            <a href="addCourse.html">add courses</a>. In future updates, all of these changes will be saved to a database, allowing 
+            <a href="addCourse.php">add courses</a>. In future updates, all of these changes will be saved to a database, allowing 
             for easy updates to the college system. In addition, users will have the option to view who is registered for certain 
             courses. All of these pages and functionalities can be seen listed above in the navigation bar, which will take you 
             to whatever page you click.
@@ -553,12 +553,12 @@
                 <h3>1. Students Table</h3>
                 <p>This table stores information for each enrolled student.</p>
                 <ul>
-                    <li><strong>studentID</strong> – INT, PRIMARY KEY, AUTO_INCREMENT</li>
-                    <li><strong>firstName</strong> – NVARCHAR(50), NOT NULL</li>
-                    <li><strong>lastName</strong> – NVARCHAR(50), NOT NULL</li>
-                    <li><strong>studentYear</strong> – NVARCHAR(15), NOT NULL</li>
-                    <li><strong>studentMajor</strong> – NVARCHAR(100), NULL</li>
-                    <li><strong>studentEmail</strong> – NVARCHAR(100), NOT NULL</li>
+                    <li><strong>id</strong> – INT(11), PRIMARY KEY, AUTO_INCREMENT</li>
+                    <li><strong>firstName</strong> – VARCHAR(255), NOT NULL</li>
+                    <li><strong>lastName</strong> – VARCHAR(255), NOT NULL</li>
+                    <li><strong>year</strong> – VARCHAR(255), NOT NULL</li>
+                    <li><strong>major</strong> – VARCHAR(255), NULL</li>
+                    <li><strong>email</strong> – VARCHAR(255), NOT NULL</li>
                 </ul>
             </article>
         
@@ -566,12 +566,12 @@
                 <h3>2. Instructors Table</h3>
                 <p>This table stores information for each instructor.</p>
                 <ul>
-                    <li><strong>instructorID</strong> – INT, PRIMARY KEY, AUTO_INCREMENT</li>
-                    <li><strong>firstName</strong> – NVARCHAR(50), NOT NULL</li>
-                    <li><strong>lastName</strong> – NVARCHAR(50), NOT NULL</li>
-                    <li><strong>department</strong> – NVARCHAR(100), NULL</li>
-                    <li><strong>rank</strong> – NVARCHAR(50), NOT NULL</li>
-                    <li><strong>instructorEmail</strong> – NVARCHAR(100), NOT NULL</li>
+                    <li><strong>id</strong> – INT(11), PRIMARY KEY, AUTO_INCREMENT</li>
+                    <li><strong>firstName</strong> – VARCHAR(255), NOT NULL</li>
+                    <li><strong>lastName</strong> – VARCHAR(255), NOT NULL</li>
+                    <li><strong>department</strong> – VARCHAR(255), NULL</li>
+                    <li><strong>rank</strong> – VARCHAR(255), NOT NULL</li>
+                    <li><strong>email</strong> – VARCHAR(255), NOT NULL</li>
                 </ul>
             </article>
         
@@ -579,19 +579,19 @@
                 <h3>3. Courses Table</h3>
                     <p>This table stores information about each course offered.</p>
                     <ul>
-                        <li><strong>courseID</strong> – INT, PRIMARY KEY, AUTO_INCREMENT</li>
+                        <li><strong>id</strong> – INT(11), PRIMARY KEY, AUTO_INCREMENT</li>
                         <li><strong>semester</strong> – NVARCHAR(15), NOT NULL</li>
-                        <li><strong>year</strong> – INT, NOT NULL</li>
+                        <li><strong>year</strong> – INT(11), NOT NULL</li>
                         <li><strong>prefix</strong> – NVARCHAR(10), NOT NULL</li>
-                        <li><strong>number</strong> – INT, NOT NULL</li>
-                        <li><strong>section</strong> – INT, NOT NULL</li>
-                        <li><strong>name</strong> – NVARCHAR(100), NULL</li>
-                        <li><strong>days</strong> – NVARCHAR(30), NULL</li>
-                        <li><strong>time</strong> – NVARCHAR(30), NULL</li>
-                        <li><strong>room</strong> – NVARCHAR(50), NULL</li>
-                        <li><strong>hours</strong> – INT, NOT NULL</li>
-                        <li><strong>cap</strong> – INT, NOT NULL</li>
-                        <li><strong>instructorID</strong> – INT, FOREIGN KEY REFERENCES Instructors(instructorID), NOT NULL</li>
+                        <li><strong>number</strong> – INT(11), NOT NULL</li>
+                        <li><strong>section</strong> – INT(11), NOT NULL</li>
+                        <li><strong>name</strong> – NARCHAR(255), NULL</li>
+                        <li><strong>room</strong> – VARCHAR(255), NULL</li>
+                        <li><strong>days</strong> – VARCHAR(255), NULL</li>
+                        <li><strong>time</strong> – VARCHAR(20), NULL</li>
+                        <li><strong>hours</strong> – INT(11), NOT NULL</li>
+                        <li><strong>instructorID</strong> – INT(11), FOREIGN KEY REFERENCES Instructors(instructorID), NOT NULL</li>
+                        <li><strong>enrollmentCap</strong> INT(11), NOT NULL</li>
                     </ul>
             </article>
         
@@ -599,9 +599,9 @@
                 <h3>4. Registration Table</h3>
                 <p>This table maps students to the courses they are enrolled in.</p>
                 <ul>
-                    <li><strong>registrationID</strong> – INT, PRIMARY KEY, AUTO_INCREMENT</li>
-                    <li><strong>studentID</strong> – INT, FOREIGN KEY REFERENCES Students(studentID), NOT NULL</li>
-                    <li><strong>courseID</strong> – INT, FOREIGN KEY REFERENCES Courses(courseID), NOT NULL</li>
+                    <li><strong>id</strong> – INT(11), PRIMARY KEY, AUTO_INCREMENT</li>
+                    <li><strong>studentID</strong> – INT(11), FOREIGN KEY REFERENCES students(id), NOT NULL</li>
+                    <li><strong>courseID</strong> – INT(11), FOREIGN KEY REFERENCES courses(id), NOT NULL</li>
                 </ul>
             </article>
         </section>
