@@ -30,8 +30,9 @@
         <p>On this page, you can find the <a href="#overview">technical overview of the website</a>, 
             <a href="#page-summary">summary of pages on this website</a>, 
             <a href="#page-desc">technical description of form elements</a>, the 
-            <a href="#function-desc">decription of functions</a> used on the back-end, and the 
-            <a href="#php">Technical Overview of PHP Backend</a> used for database.
+            <a href="#function-desc">decription of functions</a> used on the back-end,
+            <a href="#php">Technical Overview of PHP Backend</a> used for database, and the
+            <a href="#database-tables">database tables and queries</a> details database tables and queries used in it.
         </p>
     <h2 id="overview">Overview</h2>
         <p>This website allows students to <a href="registerCourse.html">register for courses</a> through a simple web form. 
@@ -542,6 +543,155 @@
                 <p><strong>Process:</strong> Captures student ID and course ID from the form and deletes the corresponding entry from the Registration table.</p>
                 <p><strong>SQL Operations:</strong> <code>DELETE FROM Registration WHERE studentID = ? AND courseID = ?</code></p>
             </article>
+        </section>
+
+        
+        <section>
+            <h2 id="database-tables">Database Tables and Fields</h2>
+        
+            <article id="students-table">
+                <h3>1. Students Table</h3>
+                <p>This table stores information for each enrolled student.</p>
+                <ul>
+                    <li><strong>studentID</strong> – INT, PRIMARY KEY, AUTO_INCREMENT</li>
+                    <li><strong>firstName</strong> – NVARCHAR(50), NOT NULL</li>
+                    <li><strong>lastName</strong> – NVARCHAR(50), NOT NULL</li>
+                    <li><strong>studentYear</strong> – NVARCHAR(15), NOT NULL</li>
+                    <li><strong>studentMajor</strong> – NVARCHAR(100), NULL</li>
+                    <li><strong>studentEmail</strong> – NVARCHAR(100), NOT NULL</li>
+                </ul>
+            </article>
+        
+            <article id="instructors-table">
+                <h3>2. Instructors Table</h3>
+                <p>This table stores information for each instructor.</p>
+                <ul>
+                    <li><strong>instructorID</strong> – INT, PRIMARY KEY, AUTO_INCREMENT</li>
+                    <li><strong>firstName</strong> – NVARCHAR(50), NOT NULL</li>
+                    <li><strong>lastName</strong> – NVARCHAR(50), NOT NULL</li>
+                    <li><strong>department</strong> – NVARCHAR(100), NULL</li>
+                    <li><strong>rank</strong> – NVARCHAR(50), NOT NULL</li>
+                    <li><strong>instructorEmail</strong> – NVARCHAR(100), NOT NULL</li>
+                </ul>
+            </article>
+        
+            <article id="courses-table">
+                <h3>3. Courses Table</h3>
+                    <p>This table stores information about each course offered.</p>
+                    <ul>
+                        <li><strong>courseID</strong> – INT, PRIMARY KEY, AUTO_INCREMENT</li>
+                        <li><strong>semester</strong> – NVARCHAR(15), NOT NULL</li>
+                        <li><strong>year</strong> – INT, NOT NULL</li>
+                        <li><strong>prefix</strong> – NVARCHAR(10), NOT NULL</li>
+                        <li><strong>number</strong> – INT, NOT NULL</li>
+                        <li><strong>section</strong> – INT, NOT NULL</li>
+                        <li><strong>name</strong> – NVARCHAR(100), NULL</li>
+                        <li><strong>days</strong> – NVARCHAR(30), NULL</li>
+                        <li><strong>time</strong> – NVARCHAR(30), NULL</li>
+                        <li><strong>room</strong> – NVARCHAR(50), NULL</li>
+                        <li><strong>hours</strong> – INT, NOT NULL</li>
+                        <li><strong>cap</strong> – INT, NOT NULL</li>
+                        <li><strong>instructorID</strong> – INT, FOREIGN KEY REFERENCES Instructors(instructorID), NOT NULL</li>
+                    </ul>
+            </article>
+        
+            <article id="registration-table">
+                <h3>4. Registration Table</h3>
+                <p>This table maps students to the courses they are enrolled in.</p>
+                <ul>
+                    <li><strong>registrationID</strong> – INT, PRIMARY KEY, AUTO_INCREMENT</li>
+                    <li><strong>studentID</strong> – INT, FOREIGN KEY REFERENCES Students(studentID), NOT NULL</li>
+                    <li><strong>courseID</strong> – INT, FOREIGN KEY REFERENCES Courses(courseID), NOT NULL</li>
+                </ul>
+            </article>
+        </section>
+        
+        
+        <h2>SQL Queries Used on Each Page</h2>
+
+        <section>
+            <h3>studentEnroll.php</h3>
+                <p><strong>Description:</strong> Adds a new student into the <code>Students</code> table using information from the enrollment form.</p>
+                <p><strong>Query:</strong><br>
+                INSERT INTO Students (firstName, lastName, studentYear, studentMajor, studentEmail)<br>
+                VALUES (?, ?, ?, ?, ?)</p>
+                <p><strong>Explanation:</strong> Each <code>?</code> is a placeholder for user input handled securely through prepared statements.</p>
+        </section>
+
+        <section>
+            <h3>addInstructor.php</h3>
+                <p><strong>Description:</strong> Inserts a new instructor record into the <code>Instructors</code> table.</p>
+                <p><strong>Query:</strong><br>
+                INSERT INTO Instructors (firstName, lastName, department, rank, instructorEmail)<br>
+                VALUES (?, ?, ?, ?, ?)</p>
+                <p><strong>Explanation:</strong> Captures instructor details and stores them securely in the database.</p>
+        </section>
+
+        <section>
+            <h3>addCourseSubmit.php</h3>
+                <p><strong>Description:</strong> Adds a new course offering to the <code>Courses</code> table with metadata like schedule, room, and instructor.</p>
+                <p><strong>Query:</strong><br>
+                INSERT INTO Courses (semester, year, prefix, number, section, name, days, time, room, hours, cap, instructorID)<br>
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</p>
+                <p><strong>Explanation:</strong> One course record is inserted per submission with 12 inputs representing course details.</p>
+        </section>
+
+        <section>
+            <h3>registerCourseSubmit.php</h3>
+                <p><strong>Description:</strong> Registers a student for a course, ensuring the student is not already enrolled.</p>
+                <p><strong>Queries:</strong></p>
+                <ul>
+                    <li>SELECT studentID FROM Students WHERE firstName = ? AND lastName = ?</li>
+                    <li>SELECT courseID FROM Courses WHERE semester = ? AND year = ? AND prefix = ? AND number = ? AND section = ?</li>
+                    <li>SELECT * FROM Registration WHERE studentID = ? AND courseID = ? <em>(Check for duplicates)</em></li>
+                    <li>INSERT INTO Registration (studentID, courseID) VALUES (?, ?)</li>
+                </ul>
+                <p><strong>Explanation:</strong> The student and course IDs are first retrieved. If not already registered, the record is inserted into the <code>Registration</code> table.</p>
+        </section>
+
+        <section>
+            <h3>dropCourseSubmit.php</h3>
+                <p><strong>Description:</strong> Removes a student’s registration from a course.</p>
+                <p><strong>Queries:</strong></p>
+                <ul>
+                    <li>SELECT studentID FROM Students WHERE firstName = ? AND lastName = ?</li>
+                    <li>SELECT courseID FROM Courses WHERE semester = ? AND year = ? AND prefix = ? AND number = ? AND section = ?</li>
+                    <li>DELETE FROM Registration WHERE studentID = ? AND courseID = ?</li>
+                </ul>
+                <p><strong>Explanation:</strong> Retrieves both IDs and deletes the corresponding entry in the <code>Registration</code> table.</p>
+        </section>
+
+        <section>
+            <h3>viewCourse.php</h3>
+                <p><strong>Description:</strong> Displays courses taught by an instructor or taken by a student.</p>
+                <p><strong>Queries:</strong></p>
+                <ul>
+                    <li>SELECT * FROM Courses WHERE instructorID = ?</li>
+                    <li>SELECT Courses.courseID, prefix, number, section, name, days, time, room<br>
+                        FROM Courses<br>
+                        INNER JOIN Registration ON Courses.courseID = Registration.courseID<br>
+                        WHERE studentID = ?</li>
+                </ul>
+                <p><strong>Explanation:</strong> Depending on user type, courses are fetched either by instructor or by student registration.</p>
+        </section>
+
+        <section>
+            <h3>viewStudents.php</h3>
+                <p><strong>Description:</strong> Displays students enrolled in a particular course or in a semester.</p>
+                <p><strong>Queries:</strong></p>
+                <ul>
+                    <li>SELECT Students.studentID, firstName, lastName<br>
+                        FROM Students<br>
+                        INNER JOIN Registration ON Students.studentID = Registration.studentID<br>
+                        WHERE courseID = ?</li>
+    
+                    <li>SELECT Students.studentID, firstName, lastName<br>
+                        FROM Students<br>
+                        INNER JOIN Registration ON Students.studentID = Registration.studentID<br>
+                        INNER JOIN Courses ON Courses.courseID = Registration.courseID<br>
+                        WHERE semester = ? AND year = ?</li>
+                </ul>
+                <p><strong>Explanation:</strong> Uses JOINs to match students with their courses based on courseID or semester/year.</p>
         </section>
         
         <section>
